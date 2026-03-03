@@ -1817,15 +1817,6 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C13612"
-			(at 162.56 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(property "Description_1" ""
 			(at 162.56 73.66 0)
 			(effects
@@ -1872,6 +1863,15 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 162.56 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C13612"
 			(at 162.56 73.66 0)
 			(effects
 				(font
@@ -2095,15 +2095,6 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C27834"
-			(at 186.69 66.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(property "Description_1" ""
 			(at 186.69 66.04 0)
 			(effects
@@ -2150,6 +2141,15 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 186.69 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C27834"
 			(at 186.69 66.04 0)
 			(effects
 				(font
@@ -2426,15 +2426,6 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C27834"
-			(at 175.26 68.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(property "Description_1" ""
 			(at 175.26 68.58 0)
 			(effects
@@ -2489,6 +2480,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C27834"
+			(at 175.26 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "8bcbe43d-94b0-4c5e-86f6-0aab835fc231")
 		)
@@ -2514,7 +2514,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b41c6df2-3a5a-4383-bccd-0056928e3f40")
-		(property "Reference" "J2"
+		(property "Reference" "J9"
 			(at 107.95 49.53 0)
 			(effects
 				(font
@@ -2557,7 +2557,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C165948"
+		(property "LCSC" "C165948"
 			(at 107.95 72.39 0)
 			(effects
 				(font
@@ -2620,7 +2620,7 @@
 		(instances
 			(project ""
 				(path "/6cb3dda3-5fe8-4715-b831-354360aa3199/105f27ec-5fab-44f4-a683-69b23a7486f0"
-					(reference "J2")
+					(reference "J9")
 					(unit 1)
 				)
 			)

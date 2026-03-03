@@ -292,8 +292,9 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Transistor_FET:BSC098N10NS5"
+		(symbol "Transistor_FET:Q_NMOS_DGS"
 			(pin_names
+				(offset 0)
 				(hide yes)
 			)
 			(exclude_from_sim no)
@@ -308,7 +309,7 @@
 					(justify left)
 				)
 			)
-			(property "Value" "BSC098N10NS5"
+			(property "Value" "Q_NMOS_DGS"
 				(at 5.08 0 0)
 				(effects
 					(font
@@ -317,28 +318,16 @@
 					(justify left)
 				)
 			)
-			(property "Footprint" "Package_TO_SOT_SMD:TDSON-8-1"
-				(at 5.08 -1.905 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-						(italic yes)
-					)
-					(justify left)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "http://www.infineon.com/dgdl/Infineon-BSC098N10NS5-DS-v02_00-EN.pdf?fileId=5546d4624ad04ef9014ae95ab4221bfd"
-				(at 5.08 -3.81 0)
+			(property "Footprint" ""
+				(at 5.08 2.54 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(justify left)
 					(hide yes)
 				)
 			)
-			(property "Description" "60A Id, 100V Vds, OptiMOS N-Channel Power MOSFET, 9.8mOhm Ron, Qg (typ) 22.0nC, PG-TDSON-8"
+			(property "Datasheet" "~"
 				(at 0 0 0)
 				(effects
 					(font
@@ -347,7 +336,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "OptiMOS Power MOSFET N-MOS"
+			(property "Description" "N-MOSFET transistor, drain/gate/source"
 				(at 0 0 0)
 				(effects
 					(font
@@ -356,7 +345,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "TDSON*"
+			(property "ki_keywords" "transistor NMOS N-MOS N-MOSFET"
 				(at 0 0 0)
 				(effects
 					(font
@@ -365,7 +354,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "BSC098N10NS5_0_1"
+			(symbol "Q_NMOS_DGS_0_1"
 				(polyline
 					(pts
 						(xy 0.254 1.905) (xy 0.254 -1.905)
@@ -509,7 +498,7 @@
 				)
 				(polyline
 					(pts
-						(xy 2.794 0.508) (xy 2.921 0.381) (xy 3.683 0.381) (xy 3.81 0.254)
+						(xy 2.921 0.381) (xy 3.683 0.381)
 					)
 					(stroke
 						(width 0)
@@ -532,8 +521,8 @@
 					)
 				)
 			)
-			(symbol "BSC098N10NS5_1_1"
-				(pin passive line
+			(symbol "Q_NMOS_DGS_1_1"
+				(pin input line
 					(at -5.08 0 0)
 					(length 2.54)
 					(name "G"
@@ -543,7 +532,7 @@
 							)
 						)
 					)
-					(number "4"
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -561,24 +550,6 @@
 							)
 						)
 					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 -5.08 90)
-					(length 2.54)
-					(name "S"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
 					(number "1"
 						(effects
 							(font
@@ -590,26 +561,6 @@
 				(pin passive line
 					(at 2.54 -5.08 90)
 					(length 2.54)
-					(hide yes)
-					(name "S"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 -5.08 90)
-					(length 2.54)
-					(hide yes)
 					(name "S"
 						(effects
 							(font
@@ -862,26 +813,26 @@
 		(uuid "0e73cad0-7edc-49ff-b721-f0ae93cffc99")
 	)
 	(junction
-		(at 116.84 105.41)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "87995112-edbc-4626-b033-40a249c4f3a9")
-	)
-	(junction
 		(at 148.59 102.87)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8976c96b-811a-43e0-ad9d-1000870dca2e")
 	)
+	(junction
+		(at 107.95 92.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8e3eb72e-52fd-4469-ab78-800882f1aa9e")
+	)
 	(wire
 		(pts
-			(xy 124.46 92.71) (xy 124.46 100.33)
+			(xy 102.87 92.71) (xy 107.95 92.71)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "50c416ad-8f11-4318-8a26-6dab53eea0aa")
+		(uuid "4db6b3ed-ebce-443f-b2b9-335c7b4d617f")
 	)
 	(wire
 		(pts
@@ -892,6 +843,16 @@
 			(type default)
 		)
 		(uuid "5f3d4ab3-1165-4b35-ac20-f06e9b6201e0")
+	)
+	(wire
+		(pts
+			(xy 124.46 92.71) (xy 148.59 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "716faf9b-c585-4e8e-af29-3c516819c97c")
 	)
 	(wire
 		(pts
@@ -945,43 +906,33 @@
 	)
 	(wire
 		(pts
-			(xy 116.84 105.41) (xy 116.84 107.95)
+			(xy 107.95 100.33) (xy 107.95 102.87)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "d9cdc8fd-9999-4e2d-8bd4-e3d966f3c7c0")
+		(uuid "df47f8b9-deca-44b0-8caa-3f181313edac")
 	)
 	(wire
 		(pts
-			(xy 113.03 105.41) (xy 116.84 105.41)
+			(xy 107.95 92.71) (xy 114.3 92.71)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "f042f1a9-e3fb-44c7-b1e0-32ef00c1c078")
+		(uuid "e47d1d05-7de6-471e-9bba-fdf17a075be5")
 	)
 	(wire
 		(pts
-			(xy 124.46 110.49) (xy 124.46 115.57)
+			(xy 119.38 100.33) (xy 119.38 105.41)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "f4e89414-ce4e-45d1-bee0-1979ae7341e7")
-	)
-	(wire
-		(pts
-			(xy 124.46 92.71) (xy 148.59 92.71)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "faa1ab3b-5b06-4d6a-b4fb-843e7a32a4d4")
 	)
 	(wire
 		(pts
@@ -1006,7 +957,7 @@
 	)
 	(hierarchical_label "PyroIgnite"
 		(shape input)
-		(at 105.41 105.41 180)
+		(at 95.25 92.71 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1070,15 +1021,6 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C96346"
-			(at 148.59 97.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(property "Description_1" ""
 			(at 148.59 97.79 0)
 			(effects
@@ -1125,6 +1067,15 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 148.59 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C17819"
 			(at 148.59 97.79 0)
 			(effects
 				(font
@@ -1265,15 +1216,6 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C17644051"
-			(at 143.51 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(property "Description_1" ""
 			(at 143.51 88.9 0)
 			(effects
@@ -1320,6 +1262,15 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 143.51 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C17644051"
 			(at 143.51 88.9 0)
 			(effects
 				(font
@@ -1398,15 +1349,6 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C2933415"
-			(at 148.59 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(property "Description_1" ""
 			(at 148.59 107.95 0)
 			(effects
@@ -1453,6 +1395,15 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 148.59 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C2933415"
 			(at 148.59 107.95 0)
 			(effects
 				(font
@@ -1478,7 +1429,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 116.84 115.57 0)
+		(at 107.95 102.87 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -1487,7 +1438,7 @@
 		(fields_autoplaced yes)
 		(uuid "28f7fef2-d4c7-4219-a87e-364b4a68b172")
 		(property "Reference" "#PWR033"
-			(at 116.84 121.92 0)
+			(at 107.95 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1496,7 +1447,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 116.84 120.65 0)
+			(at 107.95 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1504,7 +1455,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 116.84 115.57 0)
+			(at 107.95 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1513,7 +1464,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 116.84 115.57 0)
+			(at 107.95 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1522,7 +1473,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 116.84 115.57 0)
+			(at 107.95 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1544,7 +1495,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 116.84 111.76 0)
+		(at 107.95 96.52 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -1553,7 +1504,7 @@
 		(fields_autoplaced yes)
 		(uuid "396f8648-b845-4959-b716-9c0ff0727161")
 		(property "Reference" "R5"
-			(at 119.38 110.4899 0)
+			(at 110.49 95.2499 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1562,7 +1513,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 119.38 113.0299 0)
+			(at 110.49 97.7899 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1571,7 +1522,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 115.062 111.76 90)
+			(at 106.172 96.52 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1580,7 +1531,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 116.84 111.76 0)
+			(at 107.95 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1589,16 +1540,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 116.84 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part" "C84376"
-			(at 116.84 111.76 0)
+			(at 107.95 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1607,7 +1549,7 @@
 			)
 		)
 		(property "Description_1" ""
-			(at 116.84 111.76 0)
+			(at 107.95 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1616,7 +1558,7 @@
 			)
 		)
 		(property "MF" ""
-			(at 116.84 111.76 0)
+			(at 107.95 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1625,7 +1567,7 @@
 			)
 		)
 		(property "MP" ""
-			(at 116.84 111.76 0)
+			(at 107.95 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1634,7 +1576,7 @@
 			)
 		)
 		(property "Package" ""
-			(at 116.84 111.76 0)
+			(at 107.95 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1643,7 +1585,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 116.84 111.76 0)
+			(at 107.95 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1652,7 +1594,16 @@
 			)
 		)
 		(property "Purchase-URL" ""
-			(at 116.84 111.76 0)
+			(at 107.95 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C84376"
+			(at 107.95 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1677,7 +1628,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 124.46 115.57 0)
+		(at 119.38 105.41 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -1686,7 +1637,7 @@
 		(fields_autoplaced yes)
 		(uuid "57ec31b6-fbb6-48f3-b5ca-f7ea4a16cdf4")
 		(property "Reference" "#PWR034"
-			(at 124.46 121.92 0)
+			(at 119.38 111.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1695,7 +1646,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 124.46 120.65 0)
+			(at 119.38 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1703,7 +1654,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 124.46 115.57 0)
+			(at 119.38 105.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1712,7 +1663,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 124.46 115.57 0)
+			(at 119.38 105.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1721,7 +1672,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 124.46 115.57 0)
+			(at 119.38 105.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1743,7 +1694,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 109.22 105.41 270)
+		(at 99.06 92.71 270)
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
@@ -1752,7 +1703,7 @@
 		(dnp no)
 		(uuid "736025da-991b-4139-ac72-899562eabd6a")
 		(property "Reference" "R4"
-			(at 107.442 101.092 90)
+			(at 97.282 88.392 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1761,7 +1712,7 @@
 			)
 		)
 		(property "Value" "100R"
-			(at 106.68 103.124 90)
+			(at 96.52 90.424 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1770,7 +1721,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 109.22 107.188 90)
+			(at 99.06 94.488 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1779,7 +1730,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 109.22 105.41 0)
+			(at 99.06 92.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1788,16 +1739,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 109.22 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part" "C17408"
-			(at 109.22 105.41 0)
+			(at 99.06 92.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1806,7 +1748,7 @@
 			)
 		)
 		(property "Description_1" ""
-			(at 109.22 105.41 90)
+			(at 99.06 92.71 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1815,7 +1757,7 @@
 			)
 		)
 		(property "MF" ""
-			(at 109.22 105.41 90)
+			(at 99.06 92.71 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1824,7 +1766,7 @@
 			)
 		)
 		(property "MP" ""
-			(at 109.22 105.41 90)
+			(at 99.06 92.71 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1833,7 +1775,7 @@
 			)
 		)
 		(property "Package" ""
-			(at 109.22 105.41 90)
+			(at 99.06 92.71 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1842,7 +1784,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 109.22 105.41 90)
+			(at 99.06 92.71 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1851,7 +1793,16 @@
 			)
 		)
 		(property "Purchase-URL" ""
-			(at 109.22 105.41 90)
+			(at 99.06 92.71 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C17408"
+			(at 99.06 92.71 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1942,8 +1893,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Transistor_FET:BSC098N10NS5")
-		(at 121.92 105.41 0)
+		(lib_id "Transistor_FET:Q_NMOS_DGS")
+		(at 119.38 95.25 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -1951,7 +1902,7 @@
 		(dnp no)
 		(uuid "d6135117-71b8-40b5-b3b2-3e30dc4176fc")
 		(property "Reference" "Q1"
-			(at 128.016 104.14 0)
+			(at 120.904 89.408 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1959,8 +1910,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "BSC098N10NS5"
-			(at 126.492 108.204 0)
+		(property "Value" "IRLML2502TRPBF"
+			(at 126.492 87.376 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1968,29 +1919,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5"
-			(at 127 107.315 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-					(italic yes)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "http://www.infineon.com/dgdl/Infineon-BSC098N10NS5-DS-v02_00-EN.pdf?fileId=5546d4624ad04ef9014ae95ab4221bfd"
-			(at 127 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Description" "60A Id, 100V Vds, OptiMOS N-Channel Power MOSFET, 9.8mOhm Ron, Qg (typ) 22.0nC, PG-TDSON-8"
-			(at 121.92 105.41 0)
+		(property "Footprint" "myFootprints:SOT23"
+			(at 116.84 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1998,8 +1928,17 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C534398"
-			(at 121.92 105.41 0)
+		(property "Datasheet" "~"
+			(at 119.38 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "N-MOSFET transistor, drain/gate/source"
+			(at 119.38 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2008,7 +1947,7 @@
 			)
 		)
 		(property "Description_1" ""
-			(at 121.92 105.41 0)
+			(at 119.38 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2017,7 +1956,7 @@
 			)
 		)
 		(property "MF" ""
-			(at 121.92 105.41 0)
+			(at 119.38 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2026,7 +1965,7 @@
 			)
 		)
 		(property "MP" ""
-			(at 121.92 105.41 0)
+			(at 119.38 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2035,7 +1974,7 @@
 			)
 		)
 		(property "Package" ""
-			(at 121.92 105.41 0)
+			(at 119.38 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2044,7 +1983,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 121.92 105.41 0)
+			(at 119.38 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2053,7 +1992,16 @@
 			)
 		)
 		(property "Purchase-URL" ""
-			(at 121.92 105.41 0)
+			(at 119.38 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C2589"
+			(at 119.38 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2064,14 +2012,8 @@
 		(pin "2"
 			(uuid "a731ffbd-5984-4072-a20e-94bb77bccbd4")
 		)
-		(pin "5"
-			(uuid "33f1b3dc-cd38-439d-93a9-fcbef75cf0d8")
-		)
 		(pin "1"
 			(uuid "dff07a7a-e278-4067-a0cc-a8c428f72fd7")
-		)
-		(pin "4"
-			(uuid "8ceec616-e1ab-45f8-ab72-4fad1432da48")
 		)
 		(pin "3"
 			(uuid "407ba6f0-7e9a-4ca6-bb61-e3f8a2f6416a")
