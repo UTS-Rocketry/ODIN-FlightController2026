@@ -1492,15 +1492,6 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C17644051"
-			(at 130.81 53.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(property "Description_1" ""
 			(at 130.81 53.34 0)
 			(effects
@@ -1547,6 +1538,15 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 130.81 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C17644051"
 			(at 130.81 53.34 0)
 			(effects
 				(font
@@ -1691,7 +1691,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C113936"
 			(at 78.74 76.2 90)
 			(effects
 				(font
@@ -1701,15 +1701,6 @@
 			)
 		)
 		(property "Description_1" ""
-			(at 78.74 76.2 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part" "C113936"
 			(at 78.74 76.2 90)
 			(effects
 				(font
@@ -1900,7 +1891,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C113936"
 			(at 96.52 76.2 90)
 			(effects
 				(font
@@ -1910,15 +1901,6 @@
 			)
 		)
 		(property "Description_1" ""
-			(at 96.52 76.2 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part" "C113936"
 			(at 96.52 76.2 90)
 			(effects
 				(font
@@ -2308,7 +2290,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C435835"
 			(at 159.766 94.742 0)
 			(effects
 				(font
@@ -2318,15 +2300,6 @@
 			)
 		)
 		(property "Description_1" ""
-			(at 151.13 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part" "C435835"
 			(at 151.13 100.33 0)
 			(effects
 				(font
@@ -2553,7 +2526,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7u"
+		(property "Value" "10u"
 			(at 180.34 87.6299 0)
 			(effects
 				(font
@@ -2581,15 +2554,6 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 176.53 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part" "C98192"
 			(at 176.53 86.36 0)
 			(effects
 				(font
@@ -2644,6 +2608,15 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 176.53 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C2932476"
 			(at 176.53 86.36 0)
 			(effects
 				(font
@@ -3018,7 +2991,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1u"
+		(property "Value" "100nf"
 			(at 125.73 87.6299 0)
 			(effects
 				(font
@@ -3046,15 +3019,6 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 121.92 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part" "C28323"
 			(at 121.92 86.36 0)
 			(effects
 				(font
@@ -3109,6 +3073,15 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 121.92 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C49678"
 			(at 121.92 86.36 0)
 			(effects
 				(font

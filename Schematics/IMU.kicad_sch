@@ -1483,15 +1483,6 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C967633"
-			(at 139.7 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(property "Description_1" ""
 			(at 139.7 113.03 0)
 			(effects
@@ -1538,6 +1529,15 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 139.7 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C967633"
 			(at 139.7 113.03 0)
 			(effects
 				(font
@@ -1652,15 +1652,6 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C49678"
-			(at 129.54 66.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(property "Description_1" ""
 			(at 129.54 66.04 0)
 			(effects
@@ -1707,6 +1698,15 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 129.54 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C49678"
 			(at 129.54 66.04 0)
 			(effects
 				(font
@@ -1785,15 +1785,6 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C49678"
-			(at 129.54 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(property "Description_1" ""
 			(at 129.54 78.74 0)
 			(effects
@@ -1840,6 +1831,15 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 129.54 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C49678"
 			(at 129.54 78.74 0)
 			(effects
 				(font
@@ -1918,15 +1918,6 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C49678"
-			(at 153.67 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(property "Description_1" ""
 			(at 153.67 78.74 0)
 			(effects
@@ -1973,6 +1964,15 @@
 			)
 		)
 		(property "Purchase-URL" ""
+			(at 153.67 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C49678"
 			(at 153.67 78.74 0)
 			(effects
 				(font
