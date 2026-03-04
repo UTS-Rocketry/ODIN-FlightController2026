@@ -4322,6 +4322,16 @@
 		)
 		(uuid e98f1e28-fedb-42c7-8bb0-60c0b7a8b717)
 	)
+	(text "Pullup resistors on I2C becuase devices control low (Open Drain)"
+		(exclude_from_sim no)
+		(at 227.33 127.508 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "229c9d8d-10fb-40cb-b2fb-6b3c7b7a529b")
+	)
 	(junction
 		(at 170.18 64.77)
 		(diameter 0)
@@ -4401,6 +4411,12 @@
 		(uuid "6e960d49-3815-4b3c-a9a3-f46e0a1eae6f")
 	)
 	(junction
+		(at 190.5 138.43)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "730a2404-1cb5-478f-9c90-eda5a4dfc0b4")
+	)
+	(junction
 		(at 241.3 69.85)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4429,6 +4445,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ae3669ad-3283-4839-bf73-e0008b0741d4")
+	)
+	(junction
+		(at 190.5 135.89)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b9edde0c-f938-421b-a354-cfde01b928e7")
 	)
 	(junction
 		(at 170.18 57.15)
@@ -4577,6 +4599,16 @@
 			(type default)
 		)
 		(uuid "01912045-a5da-490c-8224-c6c54aae9042")
+	)
+	(wire
+		(pts
+			(xy 190.5 138.43) (xy 204.47 138.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "059176dc-f2d9-4e6a-8863-9400bc420ae7")
 	)
 	(wire
 		(pts
@@ -4740,6 +4772,16 @@
 	)
 	(wire
 		(pts
+			(xy 161.29 138.43) (xy 190.5 138.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2375ce0d-17fd-4907-82c8-cb6da8c1fc26")
+	)
+	(wire
+		(pts
 			(xy 165.1 82.55) (xy 161.29 82.55)
 		)
 		(stroke
@@ -4837,6 +4879,16 @@
 			(type default)
 		)
 		(uuid "352dd540-f6e9-4186-aacb-3bce462d9f4f")
+	)
+	(wire
+		(pts
+			(xy 190.5 135.89) (xy 204.47 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "366c7c29-8deb-4704-824f-a84aef104222")
 	)
 	(wire
 		(pts
@@ -5017,6 +5069,16 @@
 			(type default)
 		)
 		(uuid "5cd778c8-125b-43a8-9e4d-01f123256d28")
+	)
+	(wire
+		(pts
+			(xy 161.29 135.89) (xy 190.5 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "603f0021-334a-4107-a962-a10ce10d5685")
 	)
 	(wire
 		(pts
@@ -5340,6 +5402,16 @@
 	)
 	(wire
 		(pts
+			(xy 218.44 146.05) (xy 190.5 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9ada19eb-bb62-4d07-ab43-da29981f8e44")
+	)
+	(wire
+		(pts
 			(xy 33.02 104.14) (xy 35.56 104.14)
 		)
 		(stroke
@@ -5520,16 +5592,6 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 138.43) (xy 161.29 138.43)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bcf6796b-a421-492c-8e74-0940f5f9b4c6")
-	)
-	(wire
-		(pts
 			(xy 218.44 96.52) (xy 219.71 96.52)
 		)
 		(stroke
@@ -5657,6 +5719,16 @@
 			(type default)
 		)
 		(uuid "d9bb3b2e-dc45-4206-8673-53923a7b7a1b")
+	)
+	(wire
+		(pts
+			(xy 190.5 127) (xy 190.5 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "da9ac504-670d-4f9c-a7a5-d2012cae4a1c")
 	)
 	(wire
 		(pts
@@ -5807,16 +5879,6 @@
 			(type default)
 		)
 		(uuid "fd94af10-67c0-4bf8-858a-18b99d7c18d9")
-	)
-	(wire
-		(pts
-			(xy 165.1 135.89) (xy 161.29 135.89)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ff3295d8-bedb-44e7-a4be-4a409df75dd2")
 	)
 	(label "BOOT0"
 		(at 116.84 82.55 180)
@@ -6221,7 +6283,7 @@
 	)
 	(hierarchical_label "I2CSDL"
 		(shape input)
-		(at 165.1 138.43 0)
+		(at 204.47 138.43 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6265,7 +6327,7 @@
 	)
 	(hierarchical_label "I2CSDA"
 		(shape input)
-		(at 165.1 135.89 0)
+		(at 204.47 135.89 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6669,6 +6731,72 @@
 			(project "flightcomputer2"
 				(path "/6cb3dda3-5fe8-4715-b831-354360aa3199/2415024d-c1fa-457e-8c6b-d01152b96a1d"
 					(reference "C13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 218.44 146.05 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "121388f3-6b76-4145-912a-fbcd615195ef")
+		(property "Reference" "#PWR067"
+			(at 218.44 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 218.44 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 218.44 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 218.44 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 218.44 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c9f3b622-19e8-467d-a042-c6f31c7017f0")
+		)
+		(instances
+			(project ""
+				(path "/6cb3dda3-5fe8-4715-b831-354360aa3199/2415024d-c1fa-457e-8c6b-d01152b96a1d"
+					(reference "#PWR067")
 					(unit 1)
 				)
 			)
@@ -7677,6 +7805,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+3.3V")
+		(at 190.5 127 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "309cff02-b70d-4c49-9ab0-afe6c7f881cd")
+		(property "Reference" "#PWR068"
+			(at 190.5 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 190.5 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 190.5 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 190.5 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 190.5 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4e63e6c4-e5f4-4328-8ebb-82dfa6ab5962")
+		)
+		(instances
+			(project "flightcomputer2"
+				(path "/6cb3dda3-5fe8-4715-b831-354360aa3199/2415024d-c1fa-457e-8c6b-d01152b96a1d"
+					(reference "#PWR068")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+3.3VA")
 		(at 180.34 57.15 270)
 		(unit 1)
@@ -8157,6 +8351,85 @@
 			(project "flightcomputer2"
 				(path "/6cb3dda3-5fe8-4715-b831-354360aa3199/2415024d-c1fa-457e-8c6b-d01152b96a1d"
 					(reference "PowerLED1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 190.5 142.24 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3dc6426f-ef98-4610-aa5b-ea3a7be269f0")
+		(property "Reference" "R21"
+			(at 193.04 140.9699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "4.7k"
+			(at 193.04 143.5099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 188.722 142.24 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 190.5 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 190.5 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C17673"
+			(at 190.5 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4cd2b928-5048-4417-a3c3-766410092763")
+		)
+		(pin "2"
+			(uuid "f3dfb295-c6d4-4321-840b-a23183a5c9c4")
+		)
+		(instances
+			(project "flightcomputer2"
+				(path "/6cb3dda3-5fe8-4715-b831-354360aa3199/2415024d-c1fa-457e-8c6b-d01152b96a1d"
+					(reference "R21")
 					(unit 1)
 				)
 			)
@@ -10367,7 +10640,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C98192"
+		(property "LCSC" "C1779"
 			(at 119.38 40.64 0)
 			(effects
 				(font
@@ -12083,7 +12356,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C170109"
+		(property "LCSC" "C113825"
 			(at 232.41 104.14 0)
 			(effects
 				(font
@@ -12282,7 +12555,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C170109"
+		(property "LCSC" "C113825"
 			(at 219.71 104.14 0)
 			(effects
 				(font
@@ -12368,6 +12641,85 @@
 			(project "flightcomputer2"
 				(path "/6cb3dda3-5fe8-4715-b831-354360aa3199/2415024d-c1fa-457e-8c6b-d01152b96a1d"
 					(reference "#PWR018")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 190.5 132.08 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "dcea2587-0df4-4b12-a338-792c4f57e386")
+		(property "Reference" "R22"
+			(at 193.04 130.8099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "4.7k"
+			(at 193.04 133.3499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 188.722 132.08 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 190.5 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 190.5 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C17673"
+			(at 190.5 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ce961ae6-e0e8-4a97-b397-0534fcbdd12b")
+		)
+		(pin "2"
+			(uuid "e634be36-72f0-4b58-8841-f57cbd3f316b")
+		)
+		(instances
+			(project "flightcomputer2"
+				(path "/6cb3dda3-5fe8-4715-b831-354360aa3199/2415024d-c1fa-457e-8c6b-d01152b96a1d"
+					(reference "R22")
 					(unit 1)
 				)
 			)

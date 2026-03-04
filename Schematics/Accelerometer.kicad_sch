@@ -1166,7 +1166,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "H3LIS100DL"
+		(property "Value" "H3LIS331DL"
 			(at 132.588 88.392 0)
 			(effects
 				(font
@@ -1256,7 +1256,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2655068"
+		(property "LCSC" "C2655074"
 			(at 137.16 102.87 0)
 			(effects
 				(font
