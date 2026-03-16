@@ -854,7 +854,7 @@
 	)
 	(wire
 		(pts
-			(xy 130.81 93.98) (xy 119.38 93.98)
+			(xy 127 93.98) (xy 119.38 93.98)
 		)
 		(stroke
 			(width 0)
@@ -884,7 +884,7 @@
 	)
 	(wire
 		(pts
-			(xy 144.78 93.98) (xy 138.43 93.98)
+			(xy 135.89 93.98) (xy 134.62 93.98)
 		)
 		(stroke
 			(width 0)
@@ -996,7 +996,7 @@
 	)
 	(hierarchical_label "AuxADC"
 		(shape input)
-		(at 144.78 93.98 0)
+		(at 135.89 93.98 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1644,7 +1644,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 134.62 93.98 90)
+		(at 130.81 93.98 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -1653,7 +1653,7 @@
 		(fields_autoplaced yes)
 		(uuid "963610cd-16fb-4d02-9525-54bf089181a7")
 		(property "Reference" "R21"
-			(at 134.62 87.63 90)
+			(at 130.81 87.63 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1661,7 +1661,7 @@
 			)
 		)
 		(property "Value" "1k"
-			(at 134.62 90.17 90)
+			(at 130.81 90.17 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1669,7 +1669,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 134.62 95.758 90)
+			(at 130.81 95.758 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1678,7 +1678,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 134.62 93.98 0)
+			(at 130.81 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1687,7 +1687,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 134.62 93.98 0)
+			(at 130.81 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1696,7 +1696,7 @@
 			)
 		)
 		(property "LCSC" "C95781"
-			(at 134.62 93.98 90)
+			(at 130.81 93.98 90)
 			(effects
 				(font
 					(size 1.27 1.27)
