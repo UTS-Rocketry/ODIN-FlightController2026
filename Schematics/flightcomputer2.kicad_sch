@@ -2093,7 +2093,7 @@
 	)
 	(sheet
 		(at 59.69 124.46)
-		(size 33.02 19.05)
+		(size 33.02 26.67)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -2117,7 +2117,7 @@
 			)
 		)
 		(property "Sheetfile" "LoRa.kicad_sch"
-			(at 59.69 144.0946 0)
+			(at 59.69 151.7146 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2178,6 +2178,26 @@
 		(pin "sxSCK" input
 			(at 92.71 130.81 0)
 			(uuid "3e6f6c5b-8f2a-4e33-a47a-c539499cc492")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "sxDIO0" input
+			(at 92.71 144.78 0)
+			(uuid "adfcb4dc-35e5-4813-ab31-beba9180cfa7")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "sxDIO2" input
+			(at 92.71 147.32 0)
+			(uuid "98397320-b02a-4db2-9280-602cc73aa381")
 			(effects
 				(font
 					(size 1.27 1.27)

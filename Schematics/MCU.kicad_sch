@@ -4528,10 +4528,6 @@
 		(uuid "0d27b12b-b526-43c9-a548-7a5dbc9a0ba0")
 	)
 	(no_connect
-		(at 161.29 135.89)
-		(uuid "145cd5d2-4752-4186-8e39-8d2f1f5f7f79")
-	)
-	(no_connect
 		(at 35.56 129.54)
 		(uuid "1d7e5ea1-9633-4663-b904-e94809cb03c0")
 	)
@@ -4558,10 +4554,6 @@
 	(no_connect
 		(at 120.65 138.43)
 		(uuid "44a38d46-052a-430b-a163-a926c26d3c0d")
-	)
-	(no_connect
-		(at 161.29 138.43)
-		(uuid "579dd465-2548-450d-8dbb-359e8a918e77")
 	)
 	(no_connect
 		(at 120.65 135.89)
@@ -4812,6 +4804,16 @@
 			(type default)
 		)
 		(uuid "26789347-a778-4ad3-b905-00d9eb4f94d2")
+	)
+	(wire
+		(pts
+			(xy 170.18 135.89) (xy 161.29 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "27848277-cfa3-471f-9303-46887ad430c8")
 	)
 	(wire
 		(pts
@@ -5725,6 +5727,16 @@
 	)
 	(wire
 		(pts
+			(xy 170.18 138.43) (xy 161.29 138.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d7b95c11-5232-430c-983a-9a769adf6ddb")
+	)
+	(wire
+		(pts
 			(xy 147.32 26.67) (xy 149.86 26.67)
 		)
 		(stroke
@@ -6087,6 +6099,17 @@
 		)
 		(uuid "1271e281-5cae-4e59-9023-fd5bb4a28e72")
 	)
+	(hierarchical_label "DIO0"
+		(shape input)
+		(at 170.18 135.89 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "18322566-6129-4ed7-bb6e-656cabda831b")
+	)
 	(hierarchical_label "SPI2-MOSI"
 		(shape input)
 		(at 165.1 158.75 0)
@@ -6229,6 +6252,17 @@
 			(justify left)
 		)
 		(uuid "6db71354-4696-4cec-843d-2cec3ae94833")
+	)
+	(hierarchical_label "DIO2"
+		(shape input)
+		(at 170.18 138.43 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "6ffd7c11-efa2-4b24-8533-a65fc9e21754")
 	)
 	(hierarchical_label "GPSReset2"
 		(shape input)
