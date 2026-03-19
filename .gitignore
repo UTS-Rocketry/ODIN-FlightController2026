@@ -17,6 +17,7 @@ _autosave-*
 *.tmp
 *.bak
 /#autosaved_files#/
+/#autosaved_files#
 
 # Zip backups
 *.zip
@@ -33,4 +34,4 @@ Thumbs.db
 .vscode/
 .idea/
 *~
-.lck
+*.lck
