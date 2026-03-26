@@ -1,5 +1,6 @@
 # ODIN - UTS Rocketry – Flight Controller 2026
 
+<img width="1661" height="1668" alt="b32aecdc31f343ea89f31d750d7f50b3_T" src="https://github.com/user-attachments/assets/26e293b1-d51f-480d-ab93-dd374c82ecce" />
 
 ## Version 1.0
 Primary avionics flight controller for the 2026 AURC rocket.
