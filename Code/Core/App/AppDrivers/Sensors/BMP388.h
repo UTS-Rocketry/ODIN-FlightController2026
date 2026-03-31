@@ -14,6 +14,8 @@
 #include "stm32f4xx_hal.h"
 
 /* Declarations and definitions ----------------------------------------------*/
+
+#define MAX_LEN                                          100
 #define BMP3_ADDR                                       0x76
 
 #define BMP3_CHIP_ID                                    0x50
@@ -157,20 +159,11 @@ typedef struct{
 
 }BMP388Handle_TypeDef;
 
-typedef struct {
-    float pressureKpa;
-    float temperatureC;
-} pressure_temp;
-
 HAL_StatusTypeDef BMP388_Init (BMP388Handle_TypeDef *bmp);
 
-HAL_StatusTypeDef BMP388_ReadRawValues(BMP388Handle_TypeDef *bmp, uint32_t *raw_Pressure, 
-                                      uint32_t *raw_Temperature, uint32_t *raw_Time);
-
-HAL_StatusTypeDef BMP388_compensateValues(BMP388Handle_TypeDef *bmp, uint32_t *raw_Pressure, 
-                            uint32_t raw_Temperature, uint32_t *raw_Time);
-
-float BMP388_getAltitude (pressure_temp *pt);
+HAL_StatusTypeDef BMP388_ReadRawPressTempTime(BMP388Handle_TypeDef *bmp, uint32_t *raw_pressure, uint32_t *raw_temperature, uint32_t *time);
+BMP388_CompensateRawPressTemp(BMP388Handle_TypeDef *bmp, uint32_t raw_pressure, uint32_t raw_temperature, float *pressure, float *temperature);
+BMP388_FindAltitude(float ground_pressure, float pressure);
 
 
 #ifdef __cplusplus
