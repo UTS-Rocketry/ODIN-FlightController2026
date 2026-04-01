@@ -20,7 +20,7 @@ static uint8_t tx_buffer[1000];
 
 static int32_t platform_write(void *handle, uint8_t reg, const uint8_t *bufp,
                               uint16_t len);
-static int32_t platform_read(void *handle, uint8_t reg, uint8_t *bufp,
+static int32_t platform_read(void *handle , uint8_t reg, uint8_t *bufp,
                              uint16_t len);
 static void tx_com(uint8_t *tx_buffer, uint16_t len);
 static void platform_delay(uint32_t ms);
@@ -32,7 +32,7 @@ static stmdev_ctx_t dev_ctx;
 HAL_StatusTypeDef h3lis331dl_init(h3lis331dl_HandleTypeDef *h3)
 {
   h3lis331dl_int1_on_th_conf_t int_route;
-  uint32_t resultINT = 0;
+  int32_t resultINT = 0;
 
   /* Initialize mems driver interface */
   dev_ctx.write_reg = platform_write;
@@ -120,18 +120,36 @@ HAL_StatusTypeDef h3lis331dl_init(h3lis331dl_HandleTypeDef *h3)
 static int32_t platform_write(void *handle, uint8_t reg, const uint8_t *bufp,
                               uint16_t len)
 {
-  /* Write multiple command */
-  reg |= 0x80;
+  h3lis331dl_HandleTypeDef *h3 = (h3lis331dl_HandleTypeDef*)handle;
+
+  bitSet(reg,7);
+
+  //reg |= 0x80;
  
-  HAL_GPIO_WritePin(CS_up_GPIO_Port, CS_up_Pin, GPIO_PIN_RESET);
-  HAL_SPI_Transmit(handle, &reg, 1, 1000);
-  HAL_SPI_Transmit(handle, (uint8_t*) bufp, len, 1000);
-  HAL_GPIO_WritePin(CS_up_GPIO_Port, CS_up_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(h3->cs_port, h3->cs_pin, GPIO_PIN_RESET);
+  HAL_SPI_Transmit(h3->hspi, &reg, 1, 1000);
+  HAL_SPI_Transmit(h3->hspi, (uint8_t*) bufp, len, 1000);
+  HAL_GPIO_WritePin(h3->cs_port, h3->cs_pin, GPIO_PIN_SET);
 
   return 0;
 }
 
-void platform_delay(uint32_t ms)
+static int32_t platform_read(void *handle, uint8_t reg, uint8_t *bufp,
+                              uint16_t len)
+{
+
+  h3lis331dl_HandleTypeDef *h3 = (h3lis331dl_HandleTypeDef*)handle;
+  reg |= 0xC0;
+  
+  HAL_GPIO_WritePin(h3->cs_port, h3->cs_pin, GPIO_PIN_RESET);
+  HAL_SPI_Transmit(h3->hspi, &reg, 1, 1000);
+  HAL_SPI_Receive(h3->hspi, bufp, len, 1000);
+  HAL_GPIO_WritePin(h3->cs_port, h3->cs_pin, GPIO_PIN_SET);
+
+  return 0;
+}
+
+static void platform_delay(uint32_t ms)
 {
     HAL_Delay(ms);
 }

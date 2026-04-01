@@ -775,12 +775,14 @@ int32_t h3lis331dl_wkup_to_sleep_get(const stmdev_ctx_t *ctx, uint8_t *val);
 
 typedef struct{
   
-  //this is the spi struct pass a pointer of it to the struct for bmp388
+  //this is the spi struct pass a pointer of it to the struct for the H3
     SPI_HandleTypeDef *hspi;
     uint16_t cs_pin; //pass cs pin to drive the device low
     GPIO_TypeDef *cs_port; // this is the pin port
 
 } h3lis331dl_HandleTypeDef;
+
+HAL_StatusTypeDef h3lis331dl_init(h3lis331dl_HandleTypeDef *h3);
 
 /**
   *@}
