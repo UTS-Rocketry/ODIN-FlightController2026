@@ -11,7 +11,9 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
+/* Defines ------------------------------------------------------------------*/
 
+#define CAN_ID(node,msg) ((node << 7) | msg)
 
 typedef enum {
 
@@ -65,24 +67,49 @@ typedef enum {
 
 } CAMERA_COM_T;
 
-typedef struct {
-
-    uint8_t CANID;
-    uint8_t STATE;
-
-}HEARTBEAT;
-
 
 typedef struct {
 
-    uint8_t CANID;
     uint8_t STATE;
 
-}FSM_STATE;
+}FSM_STATE_S;
 
+typedef struct {
 
+    uint8_t command;
 
+}KESTREL_S;
 
+typedef struct {
+
+    uint8_t command;
+
+}RAVEN_S;
+
+typedef struct {
+
+    uint8_t command;
+
+}ACK_S;
+
+typedef struct {
+
+    uint8_t airbrake_pos;
+    uint8_t parafoil_dep;
+
+}ACTUATOR_S;
+
+typedef struct {
+
+    uint8_t recording_State;
+
+}CAMSTAT_S;
+
+typedef struct {
+
+    uint8_t error_code;
+
+}ERROR_S;
 
 
 
