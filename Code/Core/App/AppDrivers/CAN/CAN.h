@@ -1,6 +1,7 @@
 #ifndef CAN_H
 #define CAN_H
 #include "stm32f405xx.h"
+#include "stm32f4xx_hal_can.h"
 #include "stm32f4xx_hal_def.h"
 #include <stdint.h>
 
@@ -111,6 +112,8 @@ typedef struct {
 
 }ERROR_S;
 
+
+HAL_StatusTypeDef Can_init(CAN_HandleTypeDef *hcan);
 
 
 
