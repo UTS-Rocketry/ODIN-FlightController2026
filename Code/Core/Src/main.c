@@ -560,14 +560,13 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOC, CSFlashmMemory_Pin|CS_SD_Card_Pin|CSBarometer_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, AuxIgnite_Pin|GPS1ResetPin_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, AuxIgnite_Pin|LoRaResetPin_Pin|GPS1ResetPin_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOC, BuzzerControl_Pin|DrougeIgnite_Pin|GPS2ResetPin_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, LoRaNssPin_Pin|LoRaDIO1_Pin|LoRaResetPin_Pin|PyroIgnite_Pin
-                          |LoRaDIO0_Pin|LoRaDIO2_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, LoRaNssPin_Pin|PyroIgnite_Pin|LoRaDIO0_Pin|LoRaDIO2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(CSAccelerometer_GPIO_Port, CSAccelerometer_Pin, GPIO_PIN_SET);
@@ -592,20 +591,26 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Alternate = GPIO_AF1_TIM2;
   HAL_GPIO_Init(RGBLEDControl_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : AuxIgnite_Pin GPS1ResetPin_Pin CS_IMU_Pin */
-  GPIO_InitStruct.Pin = AuxIgnite_Pin|GPS1ResetPin_Pin|CS_IMU_Pin;
+  /*Configure GPIO pins : AuxIgnite_Pin LoRaResetPin_Pin GPS1ResetPin_Pin CS_IMU_Pin */
+  GPIO_InitStruct.Pin = AuxIgnite_Pin|LoRaResetPin_Pin|GPS1ResetPin_Pin|CS_IMU_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : LoRaNssPin_Pin LoRaDIO1_Pin LoRaResetPin_Pin CSAccelerometer_Pin
-                           PyroIgnite_Pin LoRaDIO0_Pin LoRaDIO2_Pin */
-  GPIO_InitStruct.Pin = LoRaNssPin_Pin|LoRaDIO1_Pin|LoRaResetPin_Pin|CSAccelerometer_Pin
-                          |PyroIgnite_Pin|LoRaDIO0_Pin|LoRaDIO2_Pin;
+  /*Configure GPIO pins : LoRaNssPin_Pin CSAccelerometer_Pin PyroIgnite_Pin LoRaDIO0_Pin
+                           LoRaDIO2_Pin */
+  GPIO_InitStruct.Pin = LoRaNssPin_Pin|CSAccelerometer_Pin|PyroIgnite_Pin|LoRaDIO0_Pin
+                          |LoRaDIO2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PB1 */
+  GPIO_InitStruct.Pin = GPIO_PIN_1;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
