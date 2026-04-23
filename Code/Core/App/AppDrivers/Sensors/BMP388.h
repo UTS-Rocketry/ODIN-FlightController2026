@@ -1,4 +1,3 @@
-
 //Header Guards means it wont double compile if header has been defined before
 #ifndef BMP388_H
 #define BMP388_H
