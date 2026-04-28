@@ -39,7 +39,7 @@ HAL_StatusTypeDef BMP388_Init (BMP388Handle_TypeDef *bmp) {
 
         return HAL_ERROR;
     }
-    if (data != BMP3_ADDR) {
+    if (data != BMP3_CHIP_ID) {
         return HAL_ERROR;
     }
 
@@ -108,8 +108,8 @@ HAL_StatusTypeDef BMP388_Init (BMP388Handle_TypeDef *bmp) {
 HAL_StatusTypeDef BMP388_readRegister(BMP388Handle_TypeDef *bmp, BMP388_regs reg, uint8_t *data) {
 
     //Buffers to store what is in the register
-    uint8_t txBuff[2];
-    uint8_t rxBuff[2];
+    uint8_t txBuff[3];
+    uint8_t rxBuff[3];
 
     //sets the register to read
     txBuff[0] = BitSet(reg, 7);
@@ -117,11 +117,11 @@ HAL_StatusTypeDef BMP388_readRegister(BMP388Handle_TypeDef *bmp, BMP388_regs reg
 
     HAL_GPIO_WritePin(bmp->cs_port, bmp->cs_pin, GPIO_PIN_RESET);
 
-    HAL_StatusTypeDef result = HAL_SPI_TransmitReceive(bmp->hspi, txBuff, rxBuff, 2, HAL_MAX_DELAY);
+    HAL_StatusTypeDef result = HAL_SPI_TransmitReceive(bmp->hspi, txBuff, rxBuff, 3, HAL_MAX_DELAY);
 
     HAL_GPIO_WritePin(bmp->cs_port, bmp->cs_pin, GPIO_PIN_SET);
 
-    *data = rxBuff[1];
+    *data = rxBuff[2];
 
     return result;
 

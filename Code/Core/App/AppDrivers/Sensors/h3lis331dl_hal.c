@@ -54,7 +54,7 @@ HAL_StatusTypeDef h3lis331dl_init(h3lis331dl_HandleTypeDef *h3)
   }
 
   /* Set full scale */
-  resultINT = h3lis331dl_full_scale_set(&dev_ctx, H3LIS331DL_100g);
+  resultINT = h3lis331dl_full_scale_set(&dev_ctx, H3LIS331DL_400g);
    if (resultINT != 0){
     return HAL_ERROR;
   }

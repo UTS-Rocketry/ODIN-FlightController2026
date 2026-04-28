@@ -109,8 +109,7 @@ static int32_t platform_write(void *handle, uint8_t reg, const uint8_t *bufp,
 {
   lsm6dso_HandleTypedef *l6 = (lsm6dso_HandleTypedef*)handle;
 
-  BitSet(reg,7);
-  //reg |= 0x80;
+  reg &= ~0x80;
  
   HAL_GPIO_WritePin(l6->cs_port, l6->cs_pin, GPIO_PIN_RESET);
   HAL_SPI_Transmit(l6->hspi, &reg, 1, 1000);
@@ -125,7 +124,7 @@ static int32_t platform_read(void *handle, uint8_t reg, uint8_t *bufp,
 {
 
   lsm6dso_HandleTypedef *l6 = (lsm6dso_HandleTypedef*)handle;
-  reg |= 0xC0;
+  reg |= 0x80;
   
   HAL_GPIO_WritePin(l6->cs_port, l6->cs_pin, GPIO_PIN_RESET);
   HAL_SPI_Transmit(l6->hspi, &reg, 1, 1000);
