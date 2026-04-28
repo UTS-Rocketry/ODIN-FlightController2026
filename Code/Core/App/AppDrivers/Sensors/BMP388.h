@@ -71,13 +71,13 @@
 
 /* ----- REGISTER MACROS ----- */
 
-#define BMP3_PWR_CTRL_PRESS_ON                          1U
+#define BMP3_PWR_CTRL_PRESS_ON                          (1U)
 #define BMP3_PWR_CTRL_PRESS_OFF                         0U
 #define BMP3_PWR_CTRL_TEMP_ON                           (1U << 1)
 #define BMP3_PWR_CTRL_TEMP_OFF                          0U
 #define BMP3_PWR_CTRL_MODE_SLEEP                        0U
 #define BMP3_PWR_CTRL_MODE_FORCED                       (1U << 4)
-#define BMP3_PWR_CTRL_MODE_NORMAL                       (0x03U << 4 || 0x03)
+#define BMP3_PWR_CTRL_MODE_NORMAL                       (3U << 4)
 
 #define BMP3_FIFO_CONFIG_1_FIFO_MODE_ON                 1U
 #define BMP3_FIFO_CONFIG_1_FIFO_MODE_OFF                0U

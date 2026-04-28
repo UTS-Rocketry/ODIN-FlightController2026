@@ -88,3 +88,7 @@ add_custom_target(flash
     COMMAND st-flash write ${CMAKE_PROJECT_NAME}.elf 0x08000000
     DEPENDS ${CMAKE_PROJECT_NAME}
 )
+
+target_link_options(${CMAKE_PROJECT_NAME} PRIVATE
+    -u _printf_float
+)

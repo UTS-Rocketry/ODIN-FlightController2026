@@ -26,6 +26,8 @@
 #include <stdio.h>
 #include "lsm6dsox_reg.h"
 #include "h3lis331dl_reg.h"
+#include "stm32f4xx_hal.h"
+#include "stm32f4xx_hal_def.h"
 
 /* USER CODE END Includes */
 
@@ -80,6 +82,11 @@ static void MX_SPI3_Init(void);
 static BMP388Handle_TypeDef bmp;
 static lsm6dso_HandleTypedef imu;
 static h3lis331dl_HandleTypeDef accel;
+
+float ground_pressure;
+float altitude;
+float pressure;
+float temperature;
 
 /* USER CODE END PFP */
 
@@ -143,6 +150,8 @@ int main(void)
 
   /* USER CODE BEGIN 1 */
 
+  HAL_StatusTypeDef result;
+
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -177,6 +186,15 @@ int main(void)
   
   //Sensor handle inits
   BMP388_handleinit(&bmp);
+
+  HAL_Delay(50);
+
+  result = BMP388_FindGroundPressure(&bmp, &ground_pressure);
+  if (result != HAL_OK) printf("Ground pressure error\r\n");
+  
+  printf("Ground Pressure: %.2f\r\n", ground_pressure);
+
+
   lsm6dso_handleinit(&imu);
   h3lis331dl_handleinit(&accel);
 
@@ -186,6 +204,12 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    result = BMP388_ExternalReadFunction(&bmp, &pressure, &temperature, &altitude, &ground_pressure);
+    if (result != HAL_OK) printf("read function error\r\n");
+
+    printf("Altitude: %.2f\r\n", altitude);
+
+    HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
