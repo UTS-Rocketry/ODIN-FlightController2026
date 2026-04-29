@@ -785,6 +785,8 @@ typedef struct{
 } h3lis331dl_HandleTypeDef;
 
 HAL_StatusTypeDef h3lis331dl_init(h3lis331dl_HandleTypeDef *h3);
+HAL_StatusTypeDef h3lis331dl_externalRead(int16_t *val);
+HAL_StatusTypeDef h3lis331dl_Calibration(float *offset);
 
 /**
   *@}

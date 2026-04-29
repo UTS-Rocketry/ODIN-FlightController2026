@@ -324,6 +324,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
 
     __HAL_RCC_GPIOC_CLK_ENABLE();
     __HAL_RCC_GPIOB_CLK_ENABLE();
+    
     /**SPI3 GPIO Configuration
     PC10     ------> SPI3_SCK
     PB4     ------> SPI3_MISO

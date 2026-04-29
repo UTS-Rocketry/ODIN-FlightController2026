@@ -23,6 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "BMP388.h"
+#include <stdint.h>
 #include <stdio.h>
 #include "lsm6dsox_reg.h"
 #include "h3lis331dl_reg.h"
@@ -88,6 +89,11 @@ float altitude;
 float pressure;
 float temperature;
 
+int16_t val[3] = {0};
+float offset[3] = {0};
+
+
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -139,6 +145,7 @@ void h3lis331dl_handleinit(h3lis331dl_HandleTypeDef *accel) {
   }
 
 }
+
 /* USER CODE END 0 */
 
 /**
@@ -186,17 +193,25 @@ int main(void)
   
   //Sensor handle inits
   BMP388_handleinit(&bmp);
-
   HAL_Delay(50);
-
   result = BMP388_FindGroundPressure(&bmp, &ground_pressure);
   if (result != HAL_OK) printf("Ground pressure error\r\n");
-  
-  printf("Ground Pressure: %.2f\r\n", ground_pressure);
 
 
   lsm6dso_handleinit(&imu);
+  
+  HAL_Delay(50);
+  
+
   h3lis331dl_handleinit(&accel);
+
+  HAL_Delay(50);
+
+  result = h3lis331dl_Calibration(offset);
+
+  if (result != HAL_OK) printf("Accelerometer Calibration Error\r\n");
+
+
 
   /* USER CODE END 2 */
 
@@ -204,10 +219,18 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    result = BMP388_ExternalReadFunction(&bmp, &pressure, &temperature, &altitude, &ground_pressure);
-    if (result != HAL_OK) printf("read function error\r\n");
 
-    printf("Altitude: %.2f\r\n", altitude);
+    result = BMP388_ExternalReadFunction(&bmp, &pressure, &temperature, &altitude, &ground_pressure);
+    if (result != HAL_OK) printf("BMP388 Error\r\n");
+
+    result = h3lis331dl_externalRead(val);
+    if (result != HAL_OK) printf("h3lis331dl Error\r\n");
+
+    float x_mg = h3lis331dl_from_fs200_to_mg(val[0]) - offset[0];
+    float y_mg = h3lis331dl_from_fs200_to_mg(val[1]) - offset[1];
+    float z_mg = h3lis331dl_from_fs200_to_mg(val[2]) - offset[2];
+
+    printf("Altitude: %.2f , X:%.2f Y:%.2f Z:%.2f \r\n", altitude, x_mg, y_mg, z_mg);
 
     HAL_Delay(1000);
     /* USER CODE END WHILE */
