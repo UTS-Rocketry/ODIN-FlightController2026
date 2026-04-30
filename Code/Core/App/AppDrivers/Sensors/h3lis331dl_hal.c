@@ -160,9 +160,9 @@ HAL_StatusTypeDef h3lis331dl_Calibration(float *offset) {
 
   }
 
-  offset[0] = h3lis331dl_from_fs200_to_mg(val[0] / 100) - 0.0f;
-  offset[1] = h3lis331dl_from_fs200_to_mg(val[1] / 100) - 0.0f;
-  offset[2] = h3lis331dl_from_fs200_to_mg(val[2] / 100) - 1000.0f;
+  offset[0] = h3lis331dl_from_fs200_to_mg((int16_t)(val[0] / 100)) - 0.0f;
+  offset[1] = h3lis331dl_from_fs200_to_mg((int16_t)(val[1] / 100)) - 0.0f;
+  offset[2] = h3lis331dl_from_fs200_to_mg((int16_t)(val[2] / 100)) - 1000.0f;
 
 
   return HAL_OK;

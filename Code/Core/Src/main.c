@@ -217,7 +217,7 @@ int main(void)
   /*IMU INIT*/
   lsm6dso_handleinit(&imu);
   HAL_Delay(50);
-  result = lm6dso_Calib(xl_Offset, gy_Offset);
+  result = lsm6dso_Calib(xl_Offset, gy_Offset);
   if (result != HAL_OK) printf("IMU Calibration Error\r\n");
 
 
@@ -241,13 +241,13 @@ int main(void)
     result = lsm6dso_ExternalReader(xl_Val, gy_Val);
     if (result != HAL_OK) printf("lsm6dso Error\r\n");
 
-    float x_mg_IMU = lsm6dsox_from_fs16_to_mg(xl_Val[0] - xl_Offset[0]);
-    float y_mg_IMU = lsm6dsox_from_fs16_to_mg(xl_Val[1] - xl_Offset[1]);
-    float z_mg_IMU = lsm6dsox_from_fs16_to_mg(xl_Val[2] - xl_Offset[2]);
+    float x_mg_IMU = lsm6dsox_from_fs16_to_mg(xl_Val[0]) - xl_Offset[0];
+    float y_mg_IMU = lsm6dsox_from_fs16_to_mg(xl_Val[1]) - xl_Offset[1];
+    float z_mg_IMU = lsm6dsox_from_fs16_to_mg(xl_Val[2]) - xl_Offset[2];
 
-    float x_gy = lsm6dsox_from_fs2000_to_mdps(gy_Val[0] - gy_Offset[0]);
-    float y_gy = lsm6dsox_from_fs2000_to_mdps(gy_Val[1] - gy_Offset[1]);
-    float z_gy = lsm6dsox_from_fs2000_to_mdps(gy_Val[2] - gy_Offset[2]);
+    float x_gy = lsm6dsox_from_fs2000_to_mdps(gy_Val[0]) - gy_Offset[0];
+    float y_gy = lsm6dsox_from_fs2000_to_mdps(gy_Val[1]) - gy_Offset[1];
+    float z_gy = lsm6dsox_from_fs2000_to_mdps(gy_Val[2]) - gy_Offset[2];
 
 
     printf("Alt: %.2fm | H3LIS X:%.1f Y:%.1f Z:%.1f mg | "

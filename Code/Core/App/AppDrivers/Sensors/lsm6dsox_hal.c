@@ -173,13 +173,13 @@ HAL_StatusTypeDef lsm6dso_Calib(float *xl_Offset, float *gy_Offset) {
 
   }
 
-  xl_Offset[0] = lsm6dsox_from_fs16_to_mg(xl_Store[0] / 100) - 0.0f;
-  xl_Offset[1] = lsm6dsox_from_fs16_to_mg(xl_Store[1] / 100) - 0.0f;
-  xl_Offset[2] = lsm6dsox_from_fs16_to_mg(xl_Store[2] / 100) - 1000.0f;
+  xl_Offset[0] = lsm6dsox_from_fs16_to_mg((int16_t)(xl_Store[0] / 100)) - 0.0f;
+  xl_Offset[1] = lsm6dsox_from_fs16_to_mg((int16_t)(xl_Store[1] / 100)) - 0.0f;
+  xl_Offset[2] = lsm6dsox_from_fs16_to_mg((int16_t)(xl_Store[2] / 100)) - 1000.0f;
   
-  gy_Offset[0] =lsm6dsox_from_fs2000_to_mdps(gy_Store[0]/ 100) - 0.0f;
-  gy_Offset[1] =lsm6dsox_from_fs2000_to_mdps(gy_Store[1]/ 100) - 0.0f;
-  gy_Offset[2] =lsm6dsox_from_fs2000_to_mdps(gy_Store[2]/ 100) - 1000.0f;
+  gy_Offset[0] =lsm6dsox_from_fs2000_to_mdps((int16_t)(gy_Store[0]/ 100));
+  gy_Offset[1] =lsm6dsox_from_fs2000_to_mdps((int16_t)(gy_Store[1]/ 100));
+  gy_Offset[2] =lsm6dsox_from_fs2000_to_mdps((int16_t)(gy_Store[2]/ 100));
 
 
 

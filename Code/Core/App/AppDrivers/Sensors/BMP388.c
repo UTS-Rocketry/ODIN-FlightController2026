@@ -34,7 +34,6 @@ HAL_StatusTypeDef BMP388_Init (BMP388Handle_TypeDef *bmp) {
     
     result = BMP388_readRegister(bmp,CHIP_ID,&data);
 
-	printf("CHIP_ID: 0x%02X\r\n", data);  // add this
     
     if (result != HAL_OK) {
 
@@ -100,9 +99,7 @@ HAL_StatusTypeDef BMP388_Init (BMP388Handle_TypeDef *bmp) {
     }
 
 	BMP388_readRegister(bmp, PWR_CTRL, &data);
-	printf("PWR_CTRL: 0x%02X\r\n", data);
 
-    
     return result;
 }
 
