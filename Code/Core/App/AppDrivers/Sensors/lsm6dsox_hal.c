@@ -160,7 +160,7 @@ HAL_StatusTypeDef lsm6dso_Calib(float *xl_Offset, float *gy_Offset) {
     result = lsm6dsox_acceleration_raw_get(&dev_ctx, xl_Buff);
     if (result != 0) return HAL_ERROR;
     
-    result = lsm6dsox_angular_rate_raw_get(&dev_ctx, gy_buff);
+    result = lsm6dsox_angular_rate_raw_get(&dev_ctx, gy_Buff);
     if (result != 0) return HAL_ERROR;
 
     xl_Store[0] += xl_Buff[0];
@@ -188,5 +188,20 @@ HAL_StatusTypeDef lsm6dso_Calib(float *xl_Offset, float *gy_Offset) {
 }
 
 HAL_StatusTypeDef lsm6dso_ExternalReader(int16_t *xl_Val, int16_t *gy_Val) {
+
+  lsm6dsox_status_reg_t status = {0};
+  int32_t result = 0;
+    
+    do {
+      lsm6dsox_status_reg_get(&dev_ctx, &status );
+    } while(!status.xlda || !status.gda);
+
+    result = lsm6dsox_acceleration_raw_get(&dev_ctx, xl_Val);
+    if (result != 0) return HAL_ERROR;
+    
+    result = lsm6dsox_angular_rate_raw_get(&dev_ctx, gy_Val);
+    if (result != 0) return HAL_ERROR;
+
+    return  HAL_OK;
 
 }

@@ -198,7 +198,25 @@ int main(void)
     float y_mg = h3lis331dl_from_fs200_to_mg(val[1]) - offset[1];
     float z_mg = h3lis331dl_from_fs200_to_mg(val[2]) - offset[2];
 
-    printf("Altitude: %.2f , X:%.2f Y:%.2f Z:%.2f \r\n", altitude, x_mg, y_mg, z_mg);
+    result = lsm6dso_ExternalReader(xl_Val, gy_Val);
+    if (result != HAL_OK) printf("lsm6dso Error\r\n");
+
+    float x_mg_IMU = lsm6dsox_from_fs16_to_mg(xl_Val[0] - xl_Offset[0]);
+    float y_mg_IMU = lsm6dsox_from_fs16_to_mg(xl_Val[1] - xl_Offset[1]);
+    float z_mg_IMU = lsm6dsox_from_fs16_to_mg(xl_Val[2] - xl_Offset[2]);
+
+    float x_gy = lsm6dsox_from_fs2000_to_mdps(gy_Val[0] - gy_Offset[0]);
+    float y_gy = lsm6dsox_from_fs2000_to_mdps(gy_Val[1] - gy_Offset[1]);
+    float z_gy = lsm6dsox_from_fs2000_to_mdps(gy_Val[2] - gy_Offset[2]);
+
+
+    printf("Alt: %.2fm | H3LIS X:%.1f Y:%.1f Z:%.1f mg | "
+           "IMU XL X:%.1f Y:%.1f Z:%.1f mg | "
+           "GY X:%.1f Y:%.1f Z:%.1f mdps\r\n",
+           altitude,
+           x_mg, y_mg, z_mg,
+           x_mg_IMU, y_mg_IMU, z_mg_IMU,
+           x_mdps, y_mdps, z_mdps);
 
     HAL_Delay(1000);
     /* USER CODE END WHILE */
