@@ -187,7 +187,7 @@ int main(void)
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
-  MX_GPIO_Init();
+  MX_GPIO_Init();  
   MX_ADC1_Init();
   MX_ADC2_Init();
   MX_CAN2_Init();
@@ -199,6 +199,11 @@ int main(void)
   MX_SPI3_Init();
   MX_FATFS_Init();
   /* USER CODE BEGIN 2 */
+
+  HAL_GPIO_WritePin(GPIOC, BuzzerControl_Pin, GPIO_PIN_SET);
+  HAL_Delay(500);
+  HAL_GPIO_WritePin(GPIOC, BuzzerControl_Pin, GPIO_PIN_RESET);
+  HAL_Delay(500);
   
   /*SENSOR INITS*/
 
@@ -206,19 +211,95 @@ int main(void)
   BMP388_handleinit(&bmp);
   HAL_Delay(50);
   result = BMP388_FindGroundPressure(&bmp, &ground_pressure);
-  if (result != HAL_OK) printf("Ground pressure error\r\n");
+  if (result != HAL_OK) {
+
+    printf("Ground pressure error\r\n");
+
+    HAL_GPIO_WritePin(GPIOC, BuzzerControl_Pin, GPIO_PIN_SET);
+    HAL_Delay(100);
+    HAL_GPIO_WritePin(GPIOC, BuzzerControl_Pin, GPIO_PIN_RESET);
+    HAL_Delay(1000);
+
+    HAL_GPIO_WritePin(GPIOC, BuzzerControl_Pin, GPIO_PIN_SET);
+    HAL_Delay(1000);
+    HAL_GPIO_WritePin(GPIOC, BuzzerControl_Pin, GPIO_PIN_RESET);
+    HAL_Delay(1000);
+
+
+
+    
+
+  } 
   
   /*ACCEL INIT*/
   h3lis331dl_handleinit(&accel);
   HAL_Delay(50);
   result = h3lis331dl_Calibration(offset);
-  if (result != HAL_OK) printf("Accelerometer Calibration Error\r\n");
+  if (result != HAL_OK) {
+
+    printf("Accelerometer Calibration Error\r\n");
+
+    HAL_GPIO_WritePin(GPIOC, BuzzerControl_Pin, GPIO_PIN_SET);
+    HAL_Delay(100);
+    HAL_GPIO_WritePin(GPIOC, BuzzerControl_Pin, GPIO_PIN_RESET);
+    HAL_Delay(100);
+
+    HAL_GPIO_WritePin(GPIOC, BuzzerControl_Pin, GPIO_PIN_SET);
+    HAL_Delay(100);
+    HAL_GPIO_WritePin(GPIOC, BuzzerControl_Pin, GPIO_PIN_RESET);
+    HAL_Delay(1000);
+
+    HAL_GPIO_WritePin(GPIOC, BuzzerControl_Pin, GPIO_PIN_SET);
+    HAL_Delay(1000);
+    HAL_GPIO_WritePin(GPIOC, BuzzerControl_Pin, GPIO_PIN_RESET);
+    HAL_Delay(1000);
+
+
+
+  } 
 
   /*IMU INIT*/
   lsm6dso_handleinit(&imu);
   HAL_Delay(50);
   result = lsm6dso_Calib(xl_Offset, gy_Offset);
-  if (result != HAL_OK) printf("IMU Calibration Error\r\n");
+  if (result != HAL_OK) {
+
+    printf("IMU Calibration Error\r\n");
+
+    HAL_GPIO_WritePin(GPIOC, BuzzerControl_Pin, GPIO_PIN_SET);
+    HAL_Delay(100);
+    HAL_GPIO_WritePin(GPIOC, BuzzerControl_Pin, GPIO_PIN_RESET);
+    HAL_Delay(100);
+
+    HAL_GPIO_WritePin(GPIOC, BuzzerControl_Pin, GPIO_PIN_SET);
+    HAL_Delay(100);
+    HAL_GPIO_WritePin(GPIOC, BuzzerControl_Pin, GPIO_PIN_RESET);
+    HAL_Delay(100);
+
+    HAL_GPIO_WritePin(GPIOC, BuzzerControl_Pin, GPIO_PIN_SET);
+    HAL_Delay(100);
+    HAL_GPIO_WritePin(GPIOC, BuzzerControl_Pin, GPIO_PIN_RESET);
+    HAL_Delay(1000);
+
+    HAL_GPIO_WritePin(GPIOC, BuzzerControl_Pin, GPIO_PIN_SET);
+    HAL_Delay(1000);
+    HAL_GPIO_WritePin(GPIOC, BuzzerControl_Pin, GPIO_PIN_RESET);
+    HAL_Delay(1000);
+
+  }
+
+  int x = 0;
+
+  for (x = 0; x < 5; x++) {
+
+    HAL_GPIO_WritePin(GPIOC, BuzzerControl_Pin, GPIO_PIN_SET);
+    HAL_Delay(500);
+    HAL_GPIO_WritePin(GPIOC, BuzzerControl_Pin, GPIO_PIN_RESET);
+    HAL_Delay(500);
+
+
+  }
+  
 
 
   /* USER CODE END 2 */
@@ -227,7 +308,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
+    
     result = BMP388_ExternalReadFunction(&bmp, &pressure, &temperature, &altitude, &ground_pressure);
     if (result != HAL_OK) printf("BMP388 Error\r\n");
 
