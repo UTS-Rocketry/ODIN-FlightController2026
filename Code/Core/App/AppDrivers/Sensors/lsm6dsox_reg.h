@@ -4681,6 +4681,8 @@ typedef struct{
 } lsm6dso_HandleTypedef;
 
 HAL_StatusTypeDef lsm6dso_init(lsm6dso_HandleTypedef *l6);
+HAL_StatusTypeDef lsm6dso_Calib(float *xl_Offset, float *gy_Offset)
+HAL_StatusTypeDef lsm6dso_ExternalReader(int16_t *xl_Val, int16_t *gy_Val);
 /**
   * @}
   *

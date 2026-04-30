@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <string.h>
 #include "stm32f4xx_hal.h"
+#include "stm32f4xx_hal_def.h"
 
 /* Defines           ---------------------------------------------------------*/
 #define  BOOT_TIME     50 //ms
@@ -39,10 +40,9 @@ HAL_StatusTypeDef lsm6dso_init(lsm6dso_HandleTypedef *l6)
   
   /* Wait sensor boot time */
   platform_delay(BOOT_TIME);
+  
   /* Check device ID */
   resultINT = lsm6dsox_device_id_get(&dev_ctx, &whoamI);
-
-  printf("resultINT: 0x%02X\r\n", whoamI);  // add this
 
   if (resultINT != 0) {
     return HAL_ERROR;
@@ -66,7 +66,7 @@ HAL_StatusTypeDef lsm6dso_init(lsm6dso_HandleTypedef *l6)
   }
 
   /* Set XL Output Data Rate to 416 Hz */
-  resultINT = lsm6dsox_xl_data_rate_set(&dev_ctx, LSM6DSOX_XL_ODR_417Hz);
+  resultINT = lsm6dsox_xl_data_rate_set(&dev_ctx, LSM6DSOX_XL_ODR_104Hz);
   if (resultINT != 0) {
     return HAL_ERROR;
   }
@@ -78,7 +78,6 @@ HAL_StatusTypeDef lsm6dso_init(lsm6dso_HandleTypedef *l6)
   }
 
  
-
   /*Set gy to 2000 dps */
   resultINT = lsm6dsox_gy_full_scale_set(&dev_ctx, LSM6DSOX_2000dps);
   if (resultINT != 0) {
@@ -86,7 +85,7 @@ HAL_StatusTypeDef lsm6dso_init(lsm6dso_HandleTypedef *l6)
   }
 
   /* Set GY output to 416 hz aswell */
-  resultINT = lsm6dsox_gy_data_rate_set(&dev_ctx, LSM6DSOX_GY_ODR_417Hz);
+  resultINT = lsm6dsox_gy_data_rate_set(&dev_ctx, LSM6DSOX_GY_ODR_104Hz);
   if (resultINT != 0) {
     return HAL_ERROR;
   }
@@ -138,4 +137,56 @@ static int32_t platform_read(void *handle, uint8_t reg, uint8_t *bufp,
 static void platform_delay(uint32_t ms)
 {
     HAL_Delay(ms);
+}
+
+
+HAL_StatusTypeDef lsm6dso_Calib(float *xl_Offset, float *gy_Offset) {
+
+  lsm6dsox_status_reg_t status = {0};
+  int16_t xl_Buff[3];
+  int16_t gy_Buff[3];
+  int32_t result = 0;
+  int x = 0;
+  
+  int32_t xl_Store[3] = {0};
+  int32_t gy_Store[3] = {0};
+  
+  for (x = 0; x < 100; x++) {
+    
+    do {
+      lsm6dsox_status_reg_get(&dev_ctx, &status );
+    } while(!status.xlda || !status.gda);
+
+    result = lsm6dsox_acceleration_raw_get(&dev_ctx, xl_Buff);
+    if (result != 0) return HAL_ERROR;
+    
+    result = lsm6dsox_angular_rate_raw_get(&dev_ctx, gy_buff);
+    if (result != 0) return HAL_ERROR;
+
+    xl_Store[0] += xl_Buff[0];
+    xl_Store[1] += xl_Buff[1];
+    xl_Store[2] += xl_Buff[2];
+
+    gy_Store[0] += gy_Buff[0];
+    gy_Store[1] += gy_Buff[1];
+    gy_Store[2] += gy_Buff[2];
+
+  }
+
+  xl_Offset[0] = lsm6dsox_from_fs16_to_mg(xl_Store[0] / 100) - 0.0f;
+  xl_Offset[1] = lsm6dsox_from_fs16_to_mg(xl_Store[1] / 100) - 0.0f;
+  xl_Offset[2] = lsm6dsox_from_fs16_to_mg(xl_Store[2] / 100) - 1000.0f;
+  
+  gy_Offset[0] =lsm6dsox_from_fs2000_to_mdps(gy_Store[0]/ 100) - 0.0f;
+  gy_Offset[1] =lsm6dsox_from_fs2000_to_mdps(gy_Store[1]/ 100) - 0.0f;
+  gy_Offset[2] =lsm6dsox_from_fs2000_to_mdps(gy_Store[2]/ 100) - 1000.0f;
+
+
+
+  return HAL_OK;
+  
+}
+
+HAL_StatusTypeDef lsm6dso_ExternalReader(int16_t *xl_Val, int16_t *gy_Val) {
+
 }

@@ -29,6 +29,8 @@
 #include "h3lis331dl_reg.h"
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx_hal_def.h"
+#include "customINIT.c"
+
 
 /* USER CODE END Includes */
 
@@ -84,14 +86,21 @@ static BMP388Handle_TypeDef bmp;
 static lsm6dso_HandleTypedef imu;
 static h3lis331dl_HandleTypeDef accel;
 
+/*BAROMETER VARIABLES*/
 float ground_pressure;
 float altitude;
 float pressure;
 float temperature;
 
+/*ACCEL VARIABLES*/
 int16_t val[3] = {0};
 float offset[3] = {0};
 
+/*IMU VARIABLES*/
+int16_t xl_Val[3] = {0};
+int16_t gy_Val[3] = {0};
+float xl_Offset[3] = {0};
+float gy_Offset[3] = {0};
 
 
 /* USER CODE END PFP */
@@ -104,47 +113,7 @@ int _write(int file, char *ptr, int len) {
     return len;
 }
 
-void BMP388_handleinit (BMP388Handle_TypeDef *bmp) {
-  
-  bmp->hspi = &hspi1;  // confirm this is correct
-  bmp->cs_port = CSBarometer_GPIO_Port;
-  bmp->cs_pin = CSBarometer_Pin;
 
-  if (BMP388_Init(bmp) != HAL_OK) {
-      printf("BMP388 init FAILED\r\n");
-  } else {
-    printf("BMP388 OK\r\n");
-  }
-
-}
-
-void lsm6dso_handleinit(lsm6dso_HandleTypedef *imu) {
-
-  imu->hspi = &hspi1;
-  imu->cs_port = CS_IMU_GPIO_Port;
-  imu->cs_pin = CS_IMU_Pin;
-  if (lsm6dso_init(imu) != HAL_OK) {
-    printf("IMU init FAILED\r\n");
-  } else {
-      printf("IMU OK\r\n");
-  }
-
-}
-
-void h3lis331dl_handleinit(h3lis331dl_HandleTypeDef *accel) {
-
-  
-  accel->hspi = &hspi1;
-  accel->cs_port = CSAccelerometer_GPIO_Port;
-  accel->cs_pin = CSAccelerometer_Pin;
-
-  if (h3lis331dl_init(accel) != HAL_OK) {
-      printf("ACCEL init FAILED\r\n");
-  } else {
-      printf("ACCEL OK\r\n");
-  }
-
-}
 
 /* USER CODE END 0 */
 
@@ -191,26 +160,25 @@ int main(void)
   MX_FATFS_Init();
   /* USER CODE BEGIN 2 */
   
-  //Sensor handle inits
+  /*SENSOR INITS*/
+
+  /* BAROMETER INIT */
   BMP388_handleinit(&bmp);
   HAL_Delay(50);
   result = BMP388_FindGroundPressure(&bmp, &ground_pressure);
   if (result != HAL_OK) printf("Ground pressure error\r\n");
-
-
-  lsm6dso_handleinit(&imu);
   
-  HAL_Delay(50);
-  
-
+  /*ACCEL INIT*/
   h3lis331dl_handleinit(&accel);
-
   HAL_Delay(50);
-
   result = h3lis331dl_Calibration(offset);
-
   if (result != HAL_OK) printf("Accelerometer Calibration Error\r\n");
 
+  /*IMU INIT*/
+  lsm6dso_handleinit(&imu);
+  HAL_Delay(50);
+  result = lm6dso_Calib(xl_Offset, gy_Offset);
+  if (result != HAL_OK) printf("IMU Calibration Error\r\n");
 
 
   /* USER CODE END 2 */

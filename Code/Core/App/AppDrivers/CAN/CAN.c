@@ -9,7 +9,7 @@
 
 CAN_HandleTypeDef hcan1;
 
-HAL_StatusTypeDef Can_init(CAN_HandleTypeDef *hcan) {
+HAL_StatusTypeDef Can_init() {
 
     HAL_StatusTypeDef result;
 
@@ -17,8 +17,8 @@ HAL_StatusTypeDef Can_init(CAN_HandleTypeDef *hcan) {
     
     hcan1.Init.Mode = CAN_MODE_NORMAL;
     
-    /*prescaler based on 42mhz clock and 500kbps data transfer*/
-    hcan1.Init.Prescaler = 6;
+    /*prescaler based on 36mhz clock and 500kbps data transfer*/
+    hcan1.Init.Prescaler = 4;
     hcan1.Init.SyncJumpWidth = CAN_SJW_1TQ;
     hcan1.Init.TimeSeg1 = CAN_BS1_11TQ;
     hcan1.Init.TimeSeg2 = CAN_BS2_2TQ;
