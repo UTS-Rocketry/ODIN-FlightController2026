@@ -235,6 +235,9 @@ int main(void)
   h3lis331dl_handleinit(&accel);
   HAL_Delay(50);
   result = h3lis331dl_Calibration(offset);
+  
+  
+  /* Beep OK! */
   if (result != HAL_OK) {
 
     printf("Accelerometer Calibration Error\r\n");
@@ -253,7 +256,6 @@ int main(void)
     HAL_Delay(1000);
     HAL_GPIO_WritePin(GPIOC, BuzzerControl_Pin, GPIO_PIN_RESET);
     HAL_Delay(1000);
-
 
 
   } 
@@ -288,18 +290,23 @@ int main(void)
 
   }
 
-  int x = 0;
+  
 
-  for (x = 0; x < 5; x++) {
+  
+  int x = 0;
+  if (result == HAL_OK) {
+    for (x = 0; x < 5; x++) {
 
     HAL_GPIO_WritePin(GPIOC, BuzzerControl_Pin, GPIO_PIN_SET);
     HAL_Delay(500);
     HAL_GPIO_WritePin(GPIOC, BuzzerControl_Pin, GPIO_PIN_RESET);
     HAL_Delay(500);
 
+    }
 
   }
   
+
 
 
   /* USER CODE END 2 */
@@ -309,6 +316,12 @@ int main(void)
   while (1)
   {
     
+    uint32_t now = HAL_GetTick();
+    uint32_t dt = now - last;
+    last = now;
+
+    printf("dt: %lums\r\n", dt);
+
     result = BMP388_ExternalReadFunction(&bmp, &pressure, &temperature, &altitude, &ground_pressure);
     if (result != HAL_OK) printf("BMP388 Error\r\n");
 
