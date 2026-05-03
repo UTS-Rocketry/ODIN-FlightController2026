@@ -233,7 +233,14 @@ HAL_StatusTypeDef BMP388_ReadRawPressTempTime(BMP388Handle_TypeDef *bmp, uint32_
     HAL_StatusTypeDef result;
 
 	uint8_t raw_data[11];
-	// Get raw data for pressure and temperature
+	/* Get raw data for pressure and temperature */
+	
+	/* register checker to see if bits are ready */
+	do {
+        result = BMP388_readBytes(bmp, 0x03, &status, 1);
+        if (result != HAL_OK) return HAL_ERROR;
+    } while (!(status & (1 << 5)) || !(status & (1 << 6)));
+	
 	result = BMP388_readBytes(bmp, DATA_0, raw_data, 11);
 	
     if(result != HAL_OK){
@@ -452,6 +459,7 @@ HAL_StatusTypeDef BMP388_ExternalReadFunction(BMP388Handle_TypeDef *bmp, float *
 	uint32_t raw_temperature;
 	uint32_t time;
 	
+
 
 	result = BMP388_ReadRawPressTempTime(bmp, &raw_pressure, &raw_temperature, &time);
 	if (result != HAL_OK) {
