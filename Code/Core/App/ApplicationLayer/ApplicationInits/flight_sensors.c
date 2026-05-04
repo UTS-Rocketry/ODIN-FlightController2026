@@ -1,5 +1,11 @@
 #include "flight_sensors.h"
+#include <stdio.h>
+#include "BMP388.h"
+#include "lsm6dsox_reg.h"
+#include "h3lis331dl_reg.h"
+#include "main.h"
 
+extern SPI_HandleTypeDef hspi1;
 static BMP388Handle_TypeDef bmp;
 static lsm6dso_HandleTypedef imu;
 static h3lis331dl_HandleTypeDef accel;

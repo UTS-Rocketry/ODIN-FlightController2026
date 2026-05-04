@@ -56,6 +56,11 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     Core/App/AppDrivers/Memory/FlashMemory.c
     Core/App/AppDrivers/Memory/SdCard.c
     Core/App/AppDrivers/USB/USBC.c
+    Core/App/ApplicationLayer/ApplicationInits/flight_sensors.c
+    Core/App/ApplicationLayer/ApplicationInits/Lora_init.c
+    Core/App/Outputs/DataLogger/logger.c
+    Core/App/Outputs/LED&buzzer/indicators.c
+    Core/App/Outputs/Telemetry/telemetry.c
 )
 
 # Add include paths
@@ -67,6 +72,12 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     Core/App/AppDrivers/LoRa
     Core/App/AppDrivers/Memory
     Core/App/AppDrivers/USB
+    Core/App/ApplicationLayer/ApplicationInits/
+    Core/App/Outputs/DataLogger
+    Core/App/Outputs/LED&buzzer
+    Core/App/Outputs/Telemetry
+
+
 )
 
 # Add project symbols (macros)

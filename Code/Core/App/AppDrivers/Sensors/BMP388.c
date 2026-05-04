@@ -232,6 +232,8 @@ HAL_StatusTypeDef BMP388_ReadRawPressTempTime(BMP388Handle_TypeDef *bmp, uint32_
 	
     HAL_StatusTypeDef result;
 
+	uint8_t status;
+
 	uint8_t raw_data[11];
 	/* Get raw data for pressure and temperature */
 	

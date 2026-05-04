@@ -1,5 +1,6 @@
 #include "telemetry.h"
 
+
 void serial_print(const FlightSensorData *sensordata)
 {
     if (sensordata == NULL) return;

@@ -164,6 +164,10 @@ HAL_StatusTypeDef BMP388_Init (BMP388Handle_TypeDef *bmp);
 HAL_StatusTypeDef BMP388_ReadRawPressTempTime(BMP388Handle_TypeDef *bmp, uint32_t *raw_pressure, uint32_t *raw_temperature, uint32_t *time);
 void BMP388_CompensateRawPressTemp(BMP388Handle_TypeDef *bmp, uint32_t raw_pressure, uint32_t raw_temperature, float *pressure, float *temperature);
 float BMP388_FindAltitude(float ground_pressure, float pressure);
+HAL_StatusTypeDef BMP388_FindGroundPressure (BMP388Handle_TypeDef *bmp, float *ground_pressure);
+HAL_StatusTypeDef BMP388_ExternalReadFunction(BMP388Handle_TypeDef *bmp, float *pressure, float *temperature, 
+											  float *altitude, float *ground_pressure);
+
 
 
 #ifdef __cplusplus

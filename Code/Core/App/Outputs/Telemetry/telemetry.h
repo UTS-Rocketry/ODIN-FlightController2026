@@ -9,6 +9,7 @@ extern "C" {
 #include "stm32f4xx_hal.h"
 #include <stdint.h>
 #include <stdio.h>
+#include "flight_sensors.h"
 
 /* Serial print for flight sensor values */
 void serial_print(const FlightSensorData *sensordata);
