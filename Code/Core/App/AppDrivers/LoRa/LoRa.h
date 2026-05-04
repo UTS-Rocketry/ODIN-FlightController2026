@@ -169,11 +169,11 @@ HAL_StatusTypeDef lora_receive_cont_poll(uint8_t *buff, uint8_t *rx_length);
 
 /*Utility*/
 
-void lora_sleep(void);
-void lora_standby(void);
-int16_t lora_packet_rssi(void); /*returns dBm*/
-uint8_t lora_version(void); /*should return 0x12*/
-float lora_packet_snr(void);
+HAL_StatusTypeDef lora_sleep();
+HAL_StatusTypeDef lora_standby();
+HAL_StatusTypeDef lora_packet_rssi(int16_t *dbm); /*returns dBm*/
+HAL_StatusTypeDef lora_version(uint8_t *lora_version); /*should return 0x12*/
+HAL_StatusTypeDef lora_packet_snr(float *snr);
 
 
 
