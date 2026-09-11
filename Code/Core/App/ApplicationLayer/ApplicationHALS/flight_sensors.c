@@ -246,6 +246,49 @@ HAL_StatusTypeDef flight_sensors_update_IMU_accel(FlightSensorData *sensordata) 
 #include "flight_state.h"
 static uint32_t sim_idx = 0;
 
+#ifdef SIM_VARIABLE_RATE
+/* Real-recorded-flight playback: each sample has its own dt (sim_dt_ms[]),
+   so instead of advancing one index per loop call (which would play back
+   at native loop cadence, not real elapsed time), we track wall-clock time
+   since arming and step sim_idx forward to match the recorded timestamps.
+   This is what makes the replay dt-accurate against the CSV it came from. */
+static uint32_t sim_start_tick = 0;
+static uint8_t  sim_started = 0;
+static uint32_t sim_elapsed_target_ms = 0; /* cumulative time sim_idx has reached */
+
+static void sim_advance(void)
+{
+    if (FSM_get_state() < STATE_PAD) return;
+
+    if (!sim_started) {
+        sim_start_tick = HAL_GetTick();
+        sim_started = 1;
+    }
+
+    uint32_t elapsed = HAL_GetTick() - sim_start_tick;
+    while (sim_idx < SIM_LEN - 1 &&
+           elapsed >= sim_elapsed_target_ms + sim_dt_ms[sim_idx]) {
+        sim_elapsed_target_ms += sim_dt_ms[sim_idx];
+        sim_idx++;
+    }
+}
+
+HAL_StatusTypeDef flight_sensors_update_IMU_accel(FlightSensorData *d) {
+    sim_advance();
+    d->z_mg_IMU = sim_accel_mg[sim_idx];
+    return HAL_OK;
+}
+
+HAL_StatusTypeDef flight_sensors_update_baro(FlightSensorData *d) {
+    sim_advance();
+    d->altitude = sim_alt[sim_idx];
+    return HAL_OK;
+}
+
+#else
+/* Original fixed-rate playback (motor profiles: SIM_DT_MS constant,
+   arrays pre-sampled onto a uniform grid). Unchanged. */
+
 HAL_StatusTypeDef flight_sensors_update_IMU_accel(FlightSensorData *d) {
     // hold on the pad sample until armed (FSM reaches PAD), then play the flight
     if (FSM_get_state() >= STATE_PAD && sim_idx < SIM_LEN - 1) {
@@ -259,4 +302,5 @@ HAL_StatusTypeDef flight_sensors_update_baro(FlightSensorData *d) {
     d->altitude = sim_alt[sim_idx];
     return HAL_OK;
 }
+#endif
 #endif

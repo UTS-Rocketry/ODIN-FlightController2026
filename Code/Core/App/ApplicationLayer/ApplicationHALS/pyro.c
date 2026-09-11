@@ -43,6 +43,7 @@ uint8_t pyro_check_drogue(void) {
     return (st == HAL_OK && val > PYRO_CONTINUITY_THRESHOLD) ? 1 : 0;
 }          
 uint8_t pyro_check_main(void) {
+    
     HAL_StatusTypeDef st;
 
     HAL_ADC_Start(&hadc2);

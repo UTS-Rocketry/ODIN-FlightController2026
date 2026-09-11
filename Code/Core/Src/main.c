@@ -362,7 +362,7 @@ int main(void)
       #endif
       
       (void)imu_result;
-      kalman_predict(sensorData.z_mg_IMU, dt, FSM_get_state() >= STATE_BOOST);
+      kalman_predict(sensorData.z_mg_IMU, dt, FSM_get_state() >= STATE_PAD);
       sensorData.kalman_altitude = kalman_get_altitude();
       sensorData.kalman_velocity = kalman_get_velocity();
       imu_sensor_read = 1;
@@ -378,7 +378,7 @@ int main(void)
       #endif
       
       (void) baro_result;
-      kalman_update(sensorData.altitude, FSM_get_state() >= STATE_BOOST);
+      kalman_update(sensorData.altitude, FSM_get_state() >= STATE_PAD);
       sensorData.kalman_altitude = kalman_get_altitude();
       sensorData.kalman_velocity = kalman_get_velocity();
       baro_sensor_read = 1;

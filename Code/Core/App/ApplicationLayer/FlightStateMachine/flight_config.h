@@ -16,24 +16,24 @@
 #define UNDERSHOOT_TIME_DELAY           10000
 
 /* ── Deployment altitudes ──────────────────────────── */
-#define MAIN_DEPLOY_ALT_M               100.0f    /* AGL meters */
+#define MAIN_DEPLOY_ALT_M               213.0f    /* AGL meters */
 #define MAIN_ALT_CONFIRM_SAMPLES        5
 
 /* ── Landing detect ────────────────────────────────── */
 #define LAND_VELOCITY_THRESHOLD         0.5f      /* m/s absolute */
-#define LAND_ALT_THRESHOLD_M            10.0f     /* AGL meters */
+#define LAND_ALT_THRESHOLD_M            20.0f     /* AGL meters */
 
 /* ── State timeouts ────────────────────────────────── */
 #define BOOST_TIMEOUT_MS                10000     
-#define COAST_TIMEOUT_MS                60000     
-#define DROGUE_TIMEOUT_MS               300000    
-#define PARAFOIL_TIMEOUT_MS             300000    
+#define COAST_TIMEOUT_MS                38000     
+#define DROGUE_TIMEOUT_MS               220000    
+#define PARAFOIL_TIMEOUT_MS             300000   
 #define SONIC_TIMOUT_MS                 3500
 
 
 /* ── Drogue-failure backup ─────────────────────────── */
 #define DROGUE_FAIL_WINDOW_SAMPLES      75         /* ~3s at 40ms baro tick */
-#define DROGUE_FAIL_RATE_MPS            -35.0f     /* m/s; between working-drogue (~-20..-25) and freefall */
+#define DROGUE_FAIL_RATE_MPS            -40.0f     /* m/s; between working-drogue (~-20..-25) and freefall */
 #define MAIN_BACKUP_CONFIRM_SAMPLES     5           /* own debounce, independent of MAIN_ALT_CONFIRM_SAMPLES */
 
 

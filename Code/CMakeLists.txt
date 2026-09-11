@@ -91,21 +91,27 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
 # Add project symbols (macros)
 target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined symbols
+    
     # DEBUG_TIMING
+
+    # BARO_NOISE_TEST
     
     # SIMS 
     
-    HIL_SIM
+    # HIL_SIM
     
     # J435
     # K1200
     # L820
     # L1400
     # L1365
-    M2050
+    # M2050
+    # FLIGHT_F1
+    # FLIGHT_F2
+    # FLIGHT_F3
 
     
-    # MEMORY_DUMP
+    MEMORY_DUMP
     # FLASH_ERASE_BUILD
     DEBUG
     

@@ -2,13 +2,30 @@
 #include <string.h>
 #include <math.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 static KalmanFilter_t kf;
+
+// Consecutive-reject resync: the 5-sigma gate protects against a single
+// glitched baro sample, but a real sustained high-dynamics event (e.g.
+// drogue/parafoil deployment shock) can disagree with the accel-only
+// prediction for multiple samples in a row. Left alone, that's an
+// unrecoverable lockout: once rejected, P[0] only grows linearly
+// (bounded process-noise injection per predict step) while the
+// uncorrected predict-only error grows quadratically (double integration
+// of the disagreement) — the gate can mathematically never catch up.
+// Confirmed on real flight data (F1/F2/F3) — every flight hit this at
+// least once, in some cases mid-COAST, and none recovered before landing.
+// After MAX_CONSECUTIVE_REJECTS in a row, force-accept the next sample
+// to resync rather than staying locked out for the rest of the flight.
+#define MAX_CONSECUTIVE_REJECTS 10
+static uint8_t reject_streak = 0;
 
 void kalman_init(void) {
     kf.altitude   = 0.0f;
     kf.velocity   = 0.0f;
     kf.accel_bias = 0.0f;
+    reject_streak = 0;
 
     memset(kf.P, 0, sizeof(kf.P));
     kf.P[0] = 1.0f;
@@ -18,7 +35,7 @@ void kalman_init(void) {
     kf.Q_altitude = 0.1f;
     kf.Q_velocity = 0.1f;
     kf.Q_bias     = 0.01f;
-    kf.R_altitude = 2.5f; /* static noise var measured at 0.70 (std 0.835m); inflated */
+    kf.R_altitude = 0.03f; /* static noise var measured at 0.70 (std 0.835m); inflated */
 }
 
 void kalman_predict(float accel_z_mg, float dt, bool freeze_bias) {
@@ -98,8 +115,15 @@ void kalman_update(float baro_altitude, bool freeze_bias) {
     // coning) yanking the whole state. Tune sigma once validated offline.
     float innovation_std = sqrtf(S);
     if (fabsf(y) > 5.0f * innovation_std) {
-        return;
+        reject_streak++;
+        if (reject_streak < MAX_CONSECUTIVE_REJECTS) {
+            return;
+        }
+        // Reached the streak limit — force-accept this sample to resync
+        // rather than staying locked out. Falls through to the normal
+        // correction below.
     }
+    reject_streak = 0;
 
     float S_inv = 1.0f / S;
 
