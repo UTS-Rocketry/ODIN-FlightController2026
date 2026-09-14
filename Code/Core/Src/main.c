@@ -428,8 +428,7 @@ int main(void)
             radio_was_busy = 1U;
           }
         }
-      } else if (FSM_get_state() <= STATE_PAD &&
-                 radio_now - last_cont >= CONTINUITY_PERIOD_MS) {
+      } else if (radio_now - last_cont >= CONTINUITY_PERIOD_MS) {
         last_cont = radio_now;
         if (lora_tx_continuity() == HAL_OK) {
           radio_was_busy = 1U;
