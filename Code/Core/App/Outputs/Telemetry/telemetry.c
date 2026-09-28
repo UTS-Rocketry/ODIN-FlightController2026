@@ -176,9 +176,9 @@ HAL_StatusTypeDef flash_dump_serial(void) {
         uint16_t calc_crc = crc16(0, buff, 62);
         const char *crc_flag = (rx_crc == calc_crc) ? "" : " CRC_BAD";
 
-          printf("[%lu] t=%lums alt=%.2f pres=%.2f temp=%.2f velocity=%.2f | "
-               "hg=%.1f,%.1f,%.1f | imu=%.1f,%.1f,%.1f | gy=%.1f,%.1f,%.1f | "
-               "state=%u main=%u(%c) drogue=%u(%c)%s\r\n",
+        printf("[%lu] t=%lums alt=%.2f pres=%.2f temp=%.2f velocity=%.2f | "
+            "hg=%.1f,%.1f,%.1f | imu=%.1f,%.1f,%.1f | gy=%.1f,%.1f,%.1f | "
+           "state=%u main=%u(%c) drogue=%u(%c)%s\r\n",
                i, timestamp_ms, altitude, pressure, temperature, velocity,
                x_mg, y_mg, z_mg,
                x_mg_IMU, y_mg_IMU, z_mg_IMU,

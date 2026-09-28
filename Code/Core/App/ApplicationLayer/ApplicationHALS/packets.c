@@ -298,12 +298,6 @@ void telemetry_serializer_memory(TelemetryPacket *packet, uint8_t *buff) {
     write_be_u16(&buff[62], crc);
 
 
-    uint16_t crc = crc16(0, buff, 60);
-
-    buff[60] =  (crc >> 8) & 0xFF;
-    buff[61] =  (crc) & 0xFF;
-
-
 }
 
 void gps_serializer(const GPSPacket *packet, uint8_t *buff)

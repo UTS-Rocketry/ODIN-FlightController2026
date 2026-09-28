@@ -14,5 +14,7 @@ uint8_t pyro_check_main(void);
 void pyro_service(void);
 void pyro_fire_drogue_ground(void);
 void pyro_fire_main_ground(void);
+uint16_t pyro_read_drogue_raw(void);
+uint16_t pyro_read_main_raw(void);
 
 #endif
