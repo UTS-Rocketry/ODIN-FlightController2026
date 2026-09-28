@@ -291,6 +291,12 @@ void telemetry_serializer_memory(TelemetryPacket *packet, uint8_t *buff) {
     buff[58] = (raw >> 8) & 0xFF;
     buff[59] = (raw) & 0xFF;
 
+    buff[60] = packet->main_cont;
+    buff[61] = packet->drogue_cont;
+
+    uint16_t crc = crc16(0, buff, 62);
+    write_be_u16(&buff[62], crc);
+
 
     uint16_t crc = crc16(0, buff, 60);
 

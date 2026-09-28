@@ -112,6 +112,8 @@ HAL_StatusTypeDef flash_log_telemetry(FlightSensorData *sensorData) {
     packet.sensordata = *sensorData;
     packet.flight_State = sensorData->flight_state;
     packet.timestamp = HAL_GetTick();
+     packet.main_cont   = (uint8_t)(pyro_read_main_raw()   >> 4);
+    packet.drogue_cont = (uint8_t)(pyro_read_drogue_raw() >> 4);
 
     telemetry_serializer_memory(&packet, buff);
 
@@ -167,18 +169,24 @@ HAL_StatusTypeDef flash_dump_serial(void) {
         uint8_t state = buff[55];
         timestamp_ms = ((uint32_t)buff[56] << 24) | ((uint32_t)buff[57] << 16) |
                        ((uint32_t)buff[58] << 8)  |  (uint32_t)buff[59];
- 
+        
+        uint16_t main_adc   = (uint16_t)buff[60] << 4;
+        uint16_t drogue_adc = (uint16_t)buff[61] << 4;
+        uint16_t rx_crc  = ((uint16_t)buff[62] << 8) | buff[63];
+        uint16_t calc_crc = crc16(0, buff, 62);
+        const char *crc_flag = (rx_crc == calc_crc) ? "" : " CRC_BAD";
 
-
-         printf("[%lu] t=%lums alt=%.2f pres=%.2f temp=%.2f velocity=%.2f | "
-                "hg=%.1f,%.1f,%.1f | "
-                "imu=%.1f,%.1f,%.1f | "
-                "gy=%.1f,%.1f,%.1f | state=%u\r\n",
-                i, timestamp_ms, altitude, pressure, temperature, velocity,
-                x_mg, y_mg, z_mg,
-                x_mg_IMU, y_mg_IMU, z_mg_IMU,
-                x_gy, y_gy, z_gy,
-                state);
+          printf("[%lu] t=%lums alt=%.2f pres=%.2f temp=%.2f velocity=%.2f | "
+               "hg=%.1f,%.1f,%.1f | imu=%.1f,%.1f,%.1f | gy=%.1f,%.1f,%.1f | "
+               "state=%u main=%u(%c) drogue=%u(%c)%s\r\n",
+               i, timestamp_ms, altitude, pressure, temperature, velocity,
+               x_mg, y_mg, z_mg,
+               x_mg_IMU, y_mg_IMU, z_mg_IMU,
+               x_gy, y_gy, z_gy,
+               state,
+               main_adc,   main_adc   > PYRO_CONTINUITY_THRESHOLD ? 'C' : 'O',
+               drogue_adc, drogue_adc > PYRO_CONTINUITY_THRESHOLD ? 'C' : 'O',
+               crc_flag);
     }
 
     return HAL_OK;

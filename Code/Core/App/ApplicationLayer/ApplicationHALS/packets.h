@@ -28,6 +28,8 @@ typedef struct{
     FlightSensorData sensordata;
     uint8_t flight_State;
     uint32_t timestamp;
+    uint8_t main_cont;
+    uint8_t drogue_cont;
     uint16_t crc;
 
 }TelemetryPacket;

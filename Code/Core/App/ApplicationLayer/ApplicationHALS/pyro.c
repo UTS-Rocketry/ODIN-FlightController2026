@@ -28,7 +28,6 @@ void pyro_init(void) {
 }
 
 
-
 uint8_t pyro_check_drogue(void) {
     HAL_StatusTypeDef st;
 
