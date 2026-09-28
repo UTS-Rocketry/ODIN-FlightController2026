@@ -111,7 +111,7 @@ target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE
     # FLIGHT_F3
 
     
-    MEMORY_DUMP
+    # MEMORY_DUMP
     # FLASH_ERASE_BUILD
     DEBUG
     

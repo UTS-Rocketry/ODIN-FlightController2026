@@ -27,96 +27,115 @@ float BMP388_CompensatePress(BMP388Handle_TypeDef *bmp, float temp, uint32_t raw
 HAL_StatusTypeDef BMP388_ExternalReadFunction(BMP388Handle_TypeDef *bmp, float *pressure, float *temperature, float *altitude, float *ground_pressure);  
 HAL_StatusTypeDef BMP388_FindGroundPressure (BMP388Handle_TypeDef *bmp, float *ground_pressure);
 
-HAL_StatusTypeDef BMP388_Init (BMP388Handle_TypeDef *bmp) {
+HAL_StatusTypeDef BMP388_Init(BMP388Handle_TypeDef *bmp) {
 
     HAL_StatusTypeDef result;
     uint8_t data;
-    
-    result = BMP388_readRegister(bmp,CHIP_ID,&data);
 
-    
+    // --- Read chip ID ---
+    result = BMP388_readRegister(bmp, CHIP_ID, &data);
+    printf("[BMP388] Read CHIP_ID reg -> status=%d, value=0x%02X\r\n", result, data);
+
     if (result != HAL_OK) {
-
+        printf("[BMP388] ERROR: Failed to read CHIP_ID register (status=%d)\r\n", result);
         return HAL_ERROR;
     }
     if (data != BMP3_CHIP_ID) {
+        printf("[BMP388] ERROR: Chip ID mismatch. Got 0x%02X, expected 0x%02X\r\n", data, BMP3_CHIP_ID);
         return HAL_ERROR;
     }
+    printf("[BMP388] Chip ID verified OK\r\n");
 
+    // --- Soft reset ---
     result = BMP388_resetRegister(bmp);
-    
+    printf("[BMP388] Reset -> status=%d\r\n", result);
     if (result != HAL_OK) {
-
+        printf("[BMP388] ERROR: Reset failed (status=%d)\r\n", result);
         return HAL_ERROR;
     }
 
     HAL_Delay(10);
 
-
+    // --- Calibration data ---
     result = BMP388_GetCalibData(bmp);
-
-     if (result != HAL_OK) {
-
+    printf("[BMP388] GetCalibData -> status=%d\r\n", result);
+    if (result != HAL_OK) {
+        printf("[BMP388] ERROR: Failed to read calibration data (status=%d)\r\n", result);
         return HAL_ERROR;
     }
 
+    // --- Oversampling / filter / ODR config ---
     result = BMP388_SetTempOS(bmp, BMP388_OVERSAMPLING_2X);
-	if (result != HAL_OK) {
-
+    printf("[BMP388] SetTempOS(2X) -> status=%d\r\n", result);
+    if (result != HAL_OK) {
+        printf("[BMP388] ERROR: SetTempOS failed (status=%d)\r\n", result);
         return HAL_ERROR;
     }
+
     result = BMP388_SetPressOS(bmp, BMP388_OVERSAMPLING_8X);
-	if (result != HAL_OK) {
-
+    printf("[BMP388] SetPressOS(8X) -> status=%d\r\n", result);
+    if (result != HAL_OK) {
+        printf("[BMP388] ERROR: SetPressOS failed (status=%d)\r\n", result);
         return HAL_ERROR;
     }
+
     result = BMP388_SetIIRFilterCoeff(bmp, BMP3_IIR_FILTER_DISABLE);
-	if (result != HAL_OK) {
-
+    printf("[BMP388] SetIIRFilterCoeff(DISABLE) -> status=%d\r\n", result);
+    if (result != HAL_OK) {
+        printf("[BMP388] ERROR: SetIIRFilterCoeff failed (status=%d)\r\n", result);
         return HAL_ERROR;
     }
+
     result = BMP388_SetOutputDataRate(bmp, BMP3_ODR_25_HZ);
-	if (result != HAL_OK) {
-
+    printf("[BMP388] SetOutputDataRate(25Hz) -> status=%d\r\n", result);
+    if (result != HAL_OK) {
+        printf("[BMP388] ERROR: SetOutputDataRate failed (status=%d)\r\n", result);
         return HAL_ERROR;
     }
 
+    // --- Write OSR register ---
     data = bmp->osr;
-
+    printf("[BMP388] Writing OSR reg = 0x%02X\r\n", data);
     result = BMP388_WriteRegister(bmp, OSR, &data);
-
+    printf("[BMP388] WriteRegister(OSR) -> status=%d\r\n", result);
     if (result != HAL_OK) {
-
+        printf("[BMP388] ERROR: Failed to write OSR register (status=%d)\r\n", result);
         return HAL_ERROR;
     }
 
+    // --- Write CONFIG register ---
     data = bmp->iir;
-    result = BMP388_WriteRegister(bmp, CONFIG ,&data);
-
-     if (result != HAL_OK) {
-
-        return HAL_ERROR;
-    }
-
-    data = bmp->odr;
-    result = BMP388_WriteRegister(bmp, ODR,&data);
-
-     if (result != HAL_OK) {
-
-        return HAL_ERROR;
-    }
-
-    data = BMP3_PWR_CTRL_PRESS_ON | BMP3_PWR_CTRL_TEMP_ON | BMP3_PWR_CTRL_MODE_NORMAL;;
-    result = BMP388_WriteRegister(bmp, PWR_CTRL, &data);
-    
+    printf("[BMP388] Writing CONFIG reg = 0x%02X\r\n", data);
+    result = BMP388_WriteRegister(bmp, CONFIG, &data);
+    printf("[BMP388] WriteRegister(CONFIG) -> status=%d\r\n", result);
     if (result != HAL_OK) {
-
+        printf("[BMP388] ERROR: Failed to write CONFIG register (status=%d)\r\n", result);
         return HAL_ERROR;
     }
 
+    // --- Write ODR register ---
+    data = bmp->odr;
+    printf("[BMP388] Writing ODR reg = 0x%02X\r\n", data);
+    result = BMP388_WriteRegister(bmp, ODR, &data);
+    printf("[BMP388] WriteRegister(ODR) -> status=%d\r\n", result);
+    if (result != HAL_OK) {
+        printf("[BMP388] ERROR: Failed to write ODR register (status=%d)\r\n", result);
+        return HAL_ERROR;
+    }
+
+    // --- Power control (enable press + temp, normal mode) ---
+    data = BMP3_PWR_CTRL_PRESS_ON | BMP3_PWR_CTRL_TEMP_ON | BMP3_PWR_CTRL_MODE_NORMAL;
+    printf("[BMP388] Writing PWR_CTRL reg = 0x%02X\r\n", data);
+    result = BMP388_WriteRegister(bmp, PWR_CTRL, &data);
+    printf("[BMP388] WriteRegister(PWR_CTRL) -> status=%d\r\n", result);
+    if (result != HAL_OK) {
+        printf("[BMP388] ERROR: Failed to write PWR_CTRL register (status=%d)\r\n", result);
+        return HAL_ERROR;
+    }
+
+    printf("[BMP388] Init complete\r\n");
     return result;
 }
-
 
 
 HAL_StatusTypeDef BMP388_readRegister(BMP388Handle_TypeDef *bmp, BMP388_regs reg, uint8_t *data) {
